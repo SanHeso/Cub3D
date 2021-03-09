@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/02/14 15:56:55 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/09 20:32:20 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	make_cart(t_list **head, int size)
 	free(cart);
 }
 
-int		main(void)
+int		parser(void)
 {
 	int		fd = open("cart.txt", O_RDONLY);
 	char	*line;

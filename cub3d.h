@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/02/13 19:02:04 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/09 20:29:41 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
-# include "minilibx_opengl_20191021/mlx.h"
+# include "mlx.h"
 # include "libft/libft.h"
 
 typedef struct		s_pix
@@ -31,34 +31,47 @@ typedef struct		s_pix
 
 typedef struct		s_win
 {
-	void	*mlx;
-	void	*img;
-	void	*win;
-	void	*adrs;
-	int		line;
-	int		end;
-	int		bpp;
+	void			*mlx;
+	void			*img;
+	void			*win;
+	void			*adrs;
+	int				line;
+	int				end;
+	int				bpp;
 }					t_win;
-
-typedef struct		s_ptr
-{
-	int		x;
-	int		y;
-}					t_ptr;
-
-typedef struct		s_plr
-{
-	float	x;
-	float	y;
-	float	dir;
-	float	start;
-	float	end;
-}					t_plr;
 
 typedef struct		s_pars
 {
-	void			*cont;
-	struct s_pars	*next;
+	int				fd;
+	int				heightr;
+	int				widthr;
+	char			*NO;
+	char			*SO;
+	char			*WE;
+	char			*EA;
+	char			*S;
+	float			F[3];
+	float			C[3];
 }					t_pars;
+
+typedef struct		s_plr
+{
+	float			x;
+	float			y;
+	float			dir;
+	float			start;
+	float			end;
+}					t_plr;
+
+typedef struct		s_cub
+{
+	t_pix			pix;
+	t_win			win;
+	t_pars			pars;
+	char			**map;
+
+}					t_cub;
+
+void				newcub(t_cub *all);
 
 #endif
