@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/09 20:32:20 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/09 20:54:52 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,42 @@ void	make_cart(t_list **head, int size)
 	free(cart);
 }
 
-int		parser(void)
+void	distribution(t_cub *all, char **arr)
 {
-	int		fd = open("cart.txt", O_RDONLY);
+	if (ft_strncmp(arr[0], "R", 1) && !all->pars.heightr && !arr[3])
+	{
+		all->pars.heightr = arr[2];
+		all->pars.widthr = arr[1];
+	}
+	if (ft_strncmp(arr[0], "NO", 2) && !all->pars.NO && !arr[2])
+		all->pars.NO = arr[1];
+	if (ft_strncmp(arr[0], "SO", 2) && !all->pars.SO && !arr[2])
+		all->pars.SO = arr[1];
+	if (ft_strncmp(arr[0], "WE", 2) && !all->pars.WE && !arr[2])
+		all->pars.WE = arr[1];
+	if (ft_strncmp(arr[0], "EA", 2) && !all->pars.EA && !arr[2])
+		all->pars.EA = arr[1];
+	if (ft_strncmp(arr[0], "S", 1) && !all->pars.S && !arr[2])
+		all->pars.S = arr[1];
+	if (ft_strncmp(arr[0], "F", 1) && !all->pars.F && !arr[2])
+		flo_cei();
+	if (ft_strncmp(arr[0], "C", 1) && !all->pars.C && !arr[2])
+		flo_cei();
+}
+
+int		parser(t_cub *all)
+{
 	char	*line;
+	char	**arr;
 	t_list	*head;
 
-	while (get_next_line(fd, &line))
+	while (get_next_line(all->pars.fd, &line))
+	{
+		arr = ft_split(line, ' ');
+
+	}
+
+	while (get_next_line(all->pars.fd, &line))
 		ft_lstadd_back(&head, ft_lstnew(line));
 	ft_lstadd_back(&head, ft_lstnew(line));
 	free(line);

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/09 20:32:06 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/09 20:55:03 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int		main(void)
 	newcub(&all);
 	if (all.pars.fd = open("star.cub", O_RDONLY))
 		perror("Произошла ошибка! ");
+	parser(&all);
 
-	
 	// mlx = mlx_init();
 	// win = mlx_new_window(mlx, 1280, 720, "first");
 	// pix.img = mlx_new_image(mlx, 1280, 720);

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/09 20:29:41 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/09 20:54:59 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ typedef struct		s_cub
 }					t_cub;
 
 void				newcub(t_cub *all);
+int					parser(t_cub *all);
 
 #endif
