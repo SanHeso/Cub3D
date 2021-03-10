@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/09 20:54:59 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/10 19:50:41 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include "libft/libft.h"
+# define SCALE 16
 
 typedef struct		s_pix
 {
@@ -68,11 +69,14 @@ typedef struct		s_cub
 	t_pix			pix;
 	t_win			win;
 	t_pars			pars;
+	t_plr			plr;
 	char			**map;
 
 }					t_cub;
 
 void				newcub(t_cub *all);
-int					parser(t_cub *all);
+void				parser(t_cub *all);
+void				flocei(t_cub *all, char *arr, int ch);
+void				memfree(char ***arr);
 
 #endif
