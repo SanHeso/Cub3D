@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/12 19:41:00 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/12 20:19:56 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int		main(void)
 		end_of_prog();
 	parser(&all);
 
-	// while(1)
-	// {}
+	while(1)
+	{}
 
 	return (0);
 
