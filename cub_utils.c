@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/10 19:50:17 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/12 19:40:39 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ void	flocei(t_cub *all, char *arr, int ch)
 	while (ch == 'F' && i < 3)
 	{
 		all->pars.F[i] = (float)ft_atoi(tmp[i]);
+		free(tmp[i]);
 		i++;
 	}
 	while (ch == 'C' && i < 3)
 	{
 		all->pars.C[i] = (float)ft_atoi(tmp[i]);
+		free(tmp[i]);
 		i++;
 	}
 }
@@ -55,4 +57,10 @@ void	memfree(char ***arr)
 		i++;
 	}
 	free((*arr));
+}
+
+void	end_of_prog(void)
+{
+	perror("Произошла ошибка! ");
+	exit(0);
 }

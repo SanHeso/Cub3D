@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/10 19:50:41 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/12 20:05:59 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ typedef struct		s_cub
 	t_pars			pars;
 	t_plr			plr;
 	char			**map;
-
 }					t_cub;
 
 void				newcub(t_cub *all);
 void				parser(t_cub *all);
 void				flocei(t_cub *all, char *arr, int ch);
 void				memfree(char ***arr);
+void				end_of_prog(void);
 
 #endif

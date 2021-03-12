@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/10 18:50:52 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/12 19:41:00 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,12 @@ int		main(void)
 	t_cub	all;
 
 	newcub(&all);
-	if (!(all.pars.fd = open("star.cub", O_RDONLY)))
-		perror("Произошла ошибка! ");
+	if ((all.pars.fd = open("efcart.cub", O_RDONLY)) == -1)
+		end_of_prog();
 	parser(&all);
+
+	// while(1)
+	// {}
 
 	return (0);
 

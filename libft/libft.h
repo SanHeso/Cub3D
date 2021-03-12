@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 13:04:44 by hnewman           #+#    #+#             */
-/*   Updated: 2021/02/14 15:43:54 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/12 18:30:05 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# define BUFFER_SIZE 16
+# define BUFFER_SIZE 26
 
 typedef struct		s_list
 {

@@ -6,33 +6,31 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/10 20:14:44 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/12 19:42:24 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	make_cart(t_list **head, int size)
+void	make_cart(t_list **head, t_cub *all, int size)
 {
 	t_list	*tmp = *head;
-	char	**cart;
 	int		i;
 
-	if (!(cart = ft_calloc(size + 1, sizeof(char *))))
-		perror("Произошла ошибка: ");
+	if (!(all->cart = ft_calloc(size + 1, sizeof(char *))))
+		end_of_prog();
 	i = 0;
 	while (tmp)
 	{
-		cart[i++] = tmp->content;
+		all->cart[i++] = tmp->content;
 		tmp = tmp->next;
 	}
 	i = 0;
-	while (cart[i++])
+	while (all->cart[i++])
 	{
-		ft_putendl_fd(cart[i], 1);
-		free(cart[i]);
+		ft_putendl_fd(all->cart[i], 1);
+		free(all->cart[i]);
 	}
-	free(cart);
 }
 
 void	distribution(t_cub *all, char **arr)
@@ -43,15 +41,15 @@ void	distribution(t_cub *all, char **arr)
 		all->pars.widthr = ft_atoi(arr[1]);
 	}
 	if (!ft_strncmp(arr[0], "NO", 2) && !all->pars.NO && !arr[2])
-		all->pars.NO = arr[1];
+		all->pars.NO = ft_strdup(arr[1]);
 	if (!ft_strncmp(arr[0], "SO", 2) && !all->pars.SO && !arr[2])
-		all->pars.SO = arr[1];
+		all->pars.SO = ft_strdup(arr[1]);
 	if (!ft_strncmp(arr[0], "WE", 2) && !all->pars.WE && !arr[2])
-		all->pars.WE = arr[1];
+		all->pars.WE = ft_strdup(arr[1]);
 	if (!ft_strncmp(arr[0], "EA", 2) && !all->pars.EA && !arr[2])
-		all->pars.EA = arr[1];
+		all->pars.EA = ft_strdup(arr[1]);
 	if (!ft_strncmp(arr[0], "S", 1) && !all->pars.S && !arr[2])
-		all->pars.S = arr[1];
+		all->pars.S = ft_strdup(arr[1]);
 	if (!ft_strncmp(arr[0], "F", 1) && !arr[2])
 		flocei(all, arr[1], 'F');
 	if (!ft_strncmp(arr[0], "C", 1) && !arr[2])
@@ -69,9 +67,14 @@ void	parser(t_cub *all)
 		arr = ft_split(line, ' ');
 		distribution(all, arr);
 		memfree(&arr);
+		printf("%p ", line);
+		printf("%s\n", line);
+		free(line);
 	}
-	printf("%d ", all->pars.heightr);
-	printf("%d\n", all->pars.widthr);
+	free(line);
+
+	printf("\n%d ", all->pars.widthr);
+	printf("%d\n", all->pars.heightr);
 	printf("%s\n", all->pars.NO);
 	printf("%s\n", all->pars.SO);
 	printf("%s\n", all->pars.WE);
@@ -87,5 +90,5 @@ void	parser(t_cub *all)
 	}
 	ft_lstadd_back(&head, ft_lstnew(line));
 	free(line);
-	make_cart(&head, ft_lstsize(head));
+	make_cart(&head, all, ft_lstsize(head));
 }
