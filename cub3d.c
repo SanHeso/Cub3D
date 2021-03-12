@@ -50,8 +50,6 @@ int		main(void)
 		perror("Произошла ошибка! ");
 	parser(&all);
 
-	while (1)
-	{}
 	return (0);
 
 	// mlx = mlx_init();

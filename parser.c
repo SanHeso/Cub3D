@@ -28,7 +28,10 @@ void	make_cart(t_list **head, int size)
 	}
 	i = 0;
 	while (cart[i++])
+	{
 		ft_putendl_fd(cart[i], 1);
+		free(cart[i]);
+	}
 	free(cart);
 }
 
@@ -69,11 +72,11 @@ void	parser(t_cub *all)
 	}
 	printf("%d ", all->pars.heightr);
 	printf("%d\n", all->pars.widthr);
-	printf("%p\n", all->pars.NO);
-	printf("%p\n", all->pars.SO);
-	printf("%p\n", all->pars.WE);
-	printf("%p\n", all->pars.EA);
-	printf("%p\n", all->pars.S);
+	printf("%s\n", all->pars.NO);
+	printf("%s\n", all->pars.SO);
+	printf("%s\n", all->pars.WE);
+	printf("%s\n", all->pars.EA);
+	printf("%s\n", all->pars.S);
 	printf("%f %f %f\n", all->pars.F[0], all->pars.F[1], all->pars.F[2]);
 	printf("%f %f %f\n", all->pars.C[0], all->pars.C[1], all->pars.C[2]);
 
