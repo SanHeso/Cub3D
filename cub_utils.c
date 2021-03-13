@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/12 19:40:39 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/13 20:05:20 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	newcub(t_cub *all)
 {
-	all->pars.heightr = 0;
-	all->pars.widthr = 0;
+	all->pars.heir = 0;
+	all->pars.widr = 0;
 	all->pars.NO = 0;
 	all->pars.SO = 0;
 	all->pars.WE = 0;
@@ -61,6 +61,6 @@ void	memfree(char ***arr)
 
 void	end_of_prog(void)
 {
-	perror("Произошла ошибка! ");
+	perror("ERROR! ");
 	exit(0);
 }
