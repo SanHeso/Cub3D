@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/13 20:06:38 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/14 18:44:54 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	make_cart(t_list **head, t_cub *all, int size)
 
 void	distribution(t_cub *all, char **arr)
 {
-	if (!ft_strncmp(arr[0], "R", 1) && !all->pars.heir && !arr[3])
+	if (!ft_strncmp(arr[0], "R", 1) && !all->pars.h && !arr[3])
 	{
-		all->pars.heir = ft_atoi(arr[2]);
-		all->pars.widr = ft_atoi(arr[1]);
+		all->pars.h = ft_atoi(arr[2]);
+		all->pars.w = ft_atoi(arr[1]);
 	}
 	else if (!ft_strncmp(arr[0], "NO", 2) && !all->pars.NO && !arr[2])
 		all->pars.NO = ft_strdup(arr[1]);
@@ -55,7 +55,7 @@ void	distribution(t_cub *all, char **arr)
 	else if  (!ft_strncmp(arr[0], "C", 1) && !arr[2])
 		flocei(all, arr[1], 'C');
 	else
-		end_of_prog("invalid param!")
+		end_of_prog();
 }
 
 void	parser(t_cub *all)

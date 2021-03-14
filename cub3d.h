@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/13 18:42:33 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/14 20:00:41 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct		s_win
 typedef struct		s_pars
 {
 	int				fd;
-	int				heir;
-	int				widr;
+	int				h;
+	int				w;
 	char			*NO;
 	char			*SO;
 	char			*WE;
@@ -57,11 +57,14 @@ typedef struct		s_pars
 
 typedef struct		s_plr
 {
-	float			x;
-	float			y;
-	float			dir;
-	float			start;
-	float			end;
+	double			posX;
+	double			posY;
+	double			dirX;
+	double			dirY;
+	double			plnX;
+	double			plnY;
+	double			time;
+	double			oldt
 }					t_plr;
 
 typedef struct		s_cub

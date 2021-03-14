@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/13 20:06:28 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/14 20:01:57 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ void	block(t_pix *data, int x, int y)
 	}
 }
 
-int		main(void)
+int		paint()
+{
+	
+}
+
+int		main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*win;
-	int		y = 0;
-	int		x = 0;
 	t_pix	pix;
 	t_cub	all;
 
@@ -52,15 +55,12 @@ int		main(void)
 		end_of_prog();
 	parser(&all);
 
-	// while(1)
-	// {}
-
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, all.pars.widr, all.pars.heir, "first");
-	pix.img = mlx_new_image(mlx, all.pars.widr, all.pars.heir);
+	win = mlx_new_window(mlx, all.pars.w, all.pars.h, "first");
+	pix.img = mlx_new_image(mlx, all.pars.w, all.pars.h);
 	pix.adrs = mlx_get_data_addr(pix.img, &pix.bits, &pix.len, &pix.end);
 
-	block(&pix, 15, 15);
+	//block(&pix, 15, 15);
 	mlx_put_image_to_window(mlx, win, pix.img, 10, 10);
 	mlx_loop(mlx);
 }
