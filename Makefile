@@ -6,13 +6,13 @@
 #    By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/09 19:32:06 by hnewman           #+#    #+#              #
-#    Updated: 2021/03/13 19:03:47 by hnewman          ###   ########.fr        #
+#    Updated: 2021/03/16 19:20:09 by hnewman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libcub.a
 
-SRCS = cub3d.c	cub_utils.c	parser.c	\
+SRCS = cub3d.c	cub_utils.c	parser.c	button.c
 
 OBJS = ${SRCS:.c=.o}
 

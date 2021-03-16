@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/14 20:01:57 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/16 19:25:55 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,30 @@ void	block(t_pix *data, int x, int y)
 	}
 }
 
-int		paint()
-{
-	
-}
+// int		paint(t_cub *all)
+// {
+
+// }
 
 int		main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*win;
 	t_pix	pix;
 	t_cub	all;
-
+	
 	newcub(&all);
-	if ((all.pars.fd = open("defcart.cub", O_RDONLY)) == -1)
+	if ((all.pars.fd = open(argv[1], O_RDONLY)) == -1)
 		end_of_prog();
 	parser(&all);
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, all.pars.w, all.pars.h, "first");
-	pix.img = mlx_new_image(mlx, all.pars.w, all.pars.h);
+	all.win.mlx = mlx_init();
+	all.win.win = mlx_new_window(all.win.mlx, all.pars.w, all.pars.h, "first");
+	pix.img = mlx_new_image(all.win.mlx, all.pars.w, all.pars.h);
 	pix.adrs = mlx_get_data_addr(pix.img, &pix.bits, &pix.len, &pix.end);
-
-	//block(&pix, 15, 15);
-	mlx_put_image_to_window(mlx, win, pix.img, 10, 10);
-	mlx_loop(mlx);
+	mlx_hook(all.win.win, 2, 1L << 0, key_press, &all);
+	mlx_hook(all.win.win, 3, 1L << 1, key_release, &all);
+	mlx_hook(all.win.win, 2, 1L << 0, close, &all);
+	//mlx_put_image_to_window(all.win.mlx, all.win.win, pix.img, 10, 10);
+	//mlx_loop_hook(all.win.mlx, paint, &all);
+	mlx_loop(all.win.mlx);
+	return (argc);
 }
