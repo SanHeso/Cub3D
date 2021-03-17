@@ -15,10 +15,12 @@
 int		ft_atoi(char *str)
 {
 	int i;
+	int s;
 	int u;
 
 	i = 0;
 	u = 0;
+	s = 0;
 	while (str[i] == '\n' || str[i] == '\t' || str[i] == ' ' \
 	|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
 		i++;
