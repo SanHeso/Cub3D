@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/16 18:14:43 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/17 19:08:21 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,31 @@ void	valid_cart(t_cub *all, int x, int y)
 		end_of_prog();
 }
 
+void	valid_screen_size(t_cub *all, char **arr)
+{
+	int		i;
+
+	i = 0;
+	if (all->pars.w)
+	{
+		while (!ft_isdigit(arr[1][i++]))
+			end_of_prog();
+		all->pars.h = mod_atoi(arr[1]);
+	}
+	i = 0;
+	if (all->pars.h)
+	{
+		while (!ft_isdigit(arr[2][i++]))
+			end_of_prog();
+		all->pars.h = mod_atoi(arr[2]);
+	}
+}
+
+void	real_screen_size(t_cub *all)
+{
+	int		rw;
+	int		rh;
+
+	mlx_get_screen_size(&rw, &rh);
+	// if()
+}

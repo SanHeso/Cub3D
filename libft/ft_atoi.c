@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 16:10:39 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/16 19:17:40 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/17 19:12:44 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,19 @@ int		ft_atoi(char *str)
 	while (str[i] == '\n' || str[i] == '\t' || str[i] == ' ' \
 	|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
 		i++;
-	if (str[i] == '-' || str[i] == '+')
-		return (0);
+	if (str[i] == '-')
+	{
+		s++;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		u = u * 10 + (str[i] - '0');
 		i++;
 	}
-	if (u > 99999)
-		return (0);
+	if (s == 1)
+		u = u * (-1);
 	return (u);
 }

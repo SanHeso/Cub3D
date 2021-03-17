@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/16 19:41:12 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/17 19:10:02 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ void				memfree(char ***arr);
 void				end_of_prog(void);
 int					key_press(int keycode, t_cub *all);
 int					key_release(int keycode, t_cub *all);
-int					close(int keycode, t_cub *all);
+int					close_prog(int keycode, t_cub *all);
+int					mod_atoi(char *str);
 
 #endif

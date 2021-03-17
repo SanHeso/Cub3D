@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:58:06 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/16 19:55:45 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/17 19:09:49 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		key_release(int keycode, t_cub *all)
 	return (1);
 }
 
-int		close(int keycode, t_cub *all)
+int		close_prog(int keycode, t_cub *all)
 {
 	exit(0);
 	return (0);
@@ -80,5 +80,22 @@ void	move_ws(t_cub *all)
 
 void	move_ad(t_cub *all)
 {
-	
+	if (all->plr.bttn_a)
+	{
+		if (all->map[(int)all->plr.pstn_x - all->plr.pln_x * all->plr.spd]
+		[(int)all->plr.pstn_y])
+			all->plr.pstn_x += all->plr.pln_x * all->plr.spd;
+		if (all->map[(int)all->plr.pstn_x]
+		[(int)all->plr.pstn_y + all->plr.pln_y * all->plr.spd])
+			all->plr.pstn_y += all->plr.pln_y * all->plr.spd;
+	}
+	if (all->plr.bttn_d)
+	{
+		if (all->map[(int)all->plr.pstn_x - all->plr.pln_x * all->plr.spd]
+		[(int)all->plr.pstn_y])
+			all->plr.pstn_x -= all->plr.pln_x * all->plr.spd;
+		if (all->map[(int)all->plr.pstn_x]
+		[(int)all->plr.pstn_y - all->plr.pln_y * all->plr.spd])
+			all->plr.pstn_y -= all->plr.pln_y * all->plr.spd;
+	}
 }

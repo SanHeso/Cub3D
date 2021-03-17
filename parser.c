@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/14 18:44:54 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/17 17:41:45 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ void	distribution(t_cub *all, char **arr)
 		all->pars.h = ft_atoi(arr[2]);
 		all->pars.w = ft_atoi(arr[1]);
 	}
-	else if (!ft_strncmp(arr[0], "NO", 2) && !all->pars.NO && !arr[2])
-		all->pars.NO = ft_strdup(arr[1]);
-	else if  (!ft_strncmp(arr[0], "SO", 2) && !all->pars.SO && !arr[2])
-		all->pars.SO = ft_strdup(arr[1]);
-	else if  (!ft_strncmp(arr[0], "WE", 2) && !all->pars.WE && !arr[2])
-		all->pars.WE = ft_strdup(arr[1]);
-	else if  (!ft_strncmp(arr[0], "EA", 2) && !all->pars.EA && !arr[2])
-		all->pars.EA = ft_strdup(arr[1]);
-	else if  (!ft_strncmp(arr[0], "S", 1) && !all->pars.S && !arr[2])
-		all->pars.S = ft_strdup(arr[1]);
-	else if  (!ft_strncmp(arr[0], "F", 1) && !arr[2])
+	else if (!ft_strncmp(arr[0], "NO", 2) && !all->pars.no && !arr[2])
+		all->pars.no = ft_strdup(arr[1]);
+	else if  (!ft_strncmp(arr[0], "SO", 2) && !all->pars.so && !arr[2])
+		all->pars.so = ft_strdup(arr[1]);
+	else if  (!ft_strncmp(arr[0], "WE", 2) && !all->pars.we && !arr[2])
+		all->pars.we = ft_strdup(arr[1]);
+	else if  (!ft_strncmp(arr[0], "EA", 2) && !all->pars.ea && !arr[2])
+		all->pars.ea = ft_strdup(arr[1]);
+	else if  (!ft_strncmp(arr[0], "S", 1) && !all->pars.s && !arr[2])
+		all->pars.s = ft_strdup(arr[1]);
+	else if  (!ft_strncmp(arr[0], "F", 1) && !all->pars.f && !arr[2])
 		flocei(all, arr[1], 'F');
-	else if  (!ft_strncmp(arr[0], "C", 1) && !arr[2])
+	else if  (!ft_strncmp(arr[0], "C", 1) && !all->pars.c && !arr[2])
 		flocei(all, arr[1], 'C');
 	else
 		end_of_prog();
