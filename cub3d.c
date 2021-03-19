@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/16 19:25:55 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/19 16:37:29 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	block(t_pix *data, int x, int y)
 	}
 }
 
+void	assembly()
+
 // int		paint(t_cub *all)
 // {
 
@@ -47,8 +49,8 @@ int		main(int argc, char **argv)
 {
 	t_pix	pix;
 	t_cub	all;
-	
-	newcub(&all);
+
+	init_pars(&all);
 	if ((all.pars.fd = open(argv[1], O_RDONLY)) == -1)
 		end_of_prog();
 	parser(&all);
@@ -59,7 +61,7 @@ int		main(int argc, char **argv)
 	pix.adrs = mlx_get_data_addr(pix.img, &pix.bits, &pix.len, &pix.end);
 	mlx_hook(all.win.win, 2, 1L << 0, key_press, &all);
 	mlx_hook(all.win.win, 3, 1L << 1, key_release, &all);
-	mlx_hook(all.win.win, 2, 1L << 0, close, &all);
+	mlx_hook(all.win.win, 2, 1L << 0, close_prog, &all);
 	//mlx_put_image_to_window(all.win.mlx, all.win.win, pix.img, 10, 10);
 	//mlx_loop_hook(all.win.mlx, paint, &all);
 	mlx_loop(all.win.mlx);

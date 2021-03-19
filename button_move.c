@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   button.c                                           :+:      :+:    :+:   */
+/*   button_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:58:06 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/17 19:09:49 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/19 19:19:03 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,21 @@ int		key_release(int keycode, t_cub *all)
 	return (1);
 }
 
-int		close_prog(int keycode, t_cub *all)
+void	rotation(t_cub *all)
 {
-	exit(0);
-	return (0);
+	double	old_dr_x;
+	double	old_pln_x;
+	double	rotate;
+
+	old_dr_x = all->plr.drctn_x;
+	old_pln_x = all->plr.pln_x;
+	rotate = all->plr.rttn_spd * all->plr.rttn;
+	all->plr.drctn_x = all->plr.drctn_x * cos(rotate) - all->plr.drctn_y
+	* sin(rotate);
+	all->plr.drctn_y = old_dr_x * sin(rotate) + all->plr.drctn_y * cos(rotate);
+	all->plr.pln_x = all->plr.pln_x * cos(rotate) - all->plr.pln_y
+	* sin(rotate);
+	all->plr.pln_y = old_pln_x * sin(rotate) + all->plr.pln_y * cos(rotate);
 }
 
 void	move_ws(t_cub *all)

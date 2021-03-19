@@ -6,13 +6,13 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/17 18:02:34 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/19 16:47:56 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	newcub(t_cub *all)
+void	init_pars(t_cub *all)
 {
 	all->pars.h = 0;
 	all->pars.w = 0;
@@ -25,38 +25,30 @@ void	newcub(t_cub *all)
 	all->pars.c[0] = 0, 0, 0;
 }
 
-void	flocei(t_cub *all, char *arr, int ch)
+void	init_ray(t_cub *all, int x)
 {
-	char	**tmp;
-
-	i = 0;
-	tmp = ft_split(arr, ',');
-	while (ch == 'F' && i < 3)
-	{
-		all->pars.f[i] = (float)ft_atoi(tmp[i]);
-		free(tmp[i]);
-		i++;
-	}
-	while (ch == 'C' && i < 3)
-	{
-
-		all->pars.c[i] = (float)ft_atoi(tmp[i]);
-		free(tmp[i]);
-		i++;
-	}
+	all->dda.cmr_x = 2 * x / (double)all->pars.w - 1;
+	all->dda.r_dr_x = all->plr.drctn_x + all->plr.pln_x * all->dda.cmr_x;
+	all->dda.r_dr_y = all->plr.drctn_y + all->plr.pln_y * all->dda.cmr_x;
+	all->dda.map_x = (int)all->plr.pstn_x;
+	all->dda.map_y = (int)all->plr.pstn_y;
+	all->dda.dlt_dst_x = fabs(1 / all->dda.r_dr_x);
+	all->dda.dlt_dst_y = fabs(1 / all->dda.r_dr_y);
+	all->dda.hit = 0;
 }
 
-void	memfree(char ***arr)
+void	init_player(t_cub *all)
 {
-	int		i;
-
-	i = 0;
-	while ((*arr)[i])
-	{
-		free((*arr)[i]);
-		i++;
-	}
-	free((*arr));
+	all->plr.pstn_x = -1;
+	all->plr.pstn_x = -1;
+	all->plr.bttn_w = 0;
+	all->plr.bttn_a = 0;
+	all->plr.bttn_s = 0;
+	all->plr.bttn_d = 0;
+	all->plr.rttn = 0;
+	all->plr.rttn_spd = 3.0;
+	all->plr.spd = 5.0;
+	)
 }
 
 void	end_of_prog(void)

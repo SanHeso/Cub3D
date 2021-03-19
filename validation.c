@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/17 19:08:21 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/19 19:56:41 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ void	valid_screen_size(t_cub *all, char **arr)
 			end_of_prog();
 		all->pars.h = mod_atoi(arr[2]);
 	}
+	real_screen_size(all);
+	if (all->pars.w == 0 || all->pars == 0)
+		end_of_prog();
 }
 
 void	real_screen_size(t_cub *all)
@@ -60,5 +63,37 @@ void	real_screen_size(t_cub *all)
 	int		rh;
 
 	mlx_get_screen_size(&rw, &rh);
-	// if()
+	if (all->pars.h > rh)
+		all->pars.h = rh;
+	if (all->pars.w > rw)
+		all->pars.w = rw;
+}
+
+void	valid_flo_cei(t_cub *all, char *arr)
+{
+	char	**tmp;
+
+	i = 0;
+	tmp = ft_split(arr, ',');
+	while (ch == 'F' && i < 3)
+	{
+		if (!ft_isdigit(tmp[i]))
+			end_of_prog();
+		all->pars.f[i] = (float)ft_atoi(tmp[i]);
+		if (all->pars.f[i] > 255)
+			end_of_prog();
+		free(tmp[i]);
+		i++;
+	}
+	while (ch == 'C' && i < 3)
+	{
+		if (!ft_isdigit(tmp[i]))
+			end_of_prog();
+		all->pars.c[i] = (float)ft_atoi(tmp[i]);
+		if (all->pars.c[i] > 255)
+			end_of_prog();
+		free(tmp[i]);
+		i++;
+	}
+	free(tmp);
 }

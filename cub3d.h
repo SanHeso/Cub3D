@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/17 19:10:02 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/19 19:28:49 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <math.h>
 # include <string.h>
 # include <fcntl.h>
-# include "mlx.h"
+# include "minilibx_opengl_20191021/mlx.h"
 # include "libft/libft.h"
 # define SCALE				16
 # define BMP_EXTN			".bmp"
@@ -141,12 +141,13 @@ typedef struct		s_cub
 	t_win			win;
 	t_pars			pars;
 	t_plr			plr;
+	t_dda			dda;
 	char			**map;
 }					t_cub;
 
-void				newcub(t_cub *all);
+void				init_pars(t_cub *all);
 void				parser(t_cub *all);
-void				flocei(t_cub *all, char *arr, int ch);
+void				flo_cei(t_cub *all, char *arr, int ch);
 void				memfree(char ***arr);
 void				end_of_prog(void);
 int					key_press(int keycode, t_cub *all);

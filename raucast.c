@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 19:32:49 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/17 16:51:27 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/19 18:50:43 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int raycaster(void)
     //     case 4:  color = RGB_White;  break; //white
     //     default: color = RGB_Yellow; break; //yellow
     //   }
-ф
+
       //give x and y sides different brightness
     //   if(side == 1) {color = color / 2;}
 

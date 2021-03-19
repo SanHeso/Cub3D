@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/17 17:41:45 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/19 19:57:00 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	distribution(t_cub *all, char **arr)
 	else if  (!ft_strncmp(arr[0], "S", 1) && !all->pars.s && !arr[2])
 		all->pars.s = ft_strdup(arr[1]);
 	else if  (!ft_strncmp(arr[0], "F", 1) && !all->pars.f && !arr[2])
-		flocei(all, arr[1], 'F');
+		valid_flo_cei(all, arr[1], 'F');
 	else if  (!ft_strncmp(arr[0], "C", 1) && !all->pars.c && !arr[2])
-		flocei(all, arr[1], 'C');
+		valid_flo_cei(all, arr[1], 'C');
 	else
 		end_of_prog();
 }
