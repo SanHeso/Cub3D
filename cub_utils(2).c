@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:19:23 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/19 16:45:32 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/20 17:03:54 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,9 @@ int		close_prog(int keycode, t_cub *all)
 	return (0);
 }
 
+int		ch_arg(int *arr)
+{
+	if (arr[0], arr[1], !arr[2])
+		return (1);
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/19 19:56:41 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/22 17:48:06 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,19 @@ void	valid_flo_cei(t_cub *all, char *arr)
 		i++;
 	}
 	free(tmp);
+}
+
+void	valid_arg(t_cub *all, int argc, char **argv)
+{
+	int		i;
+
+	i = ft_strlen(argv[1]);
+	if (argc < 2 || argc > 3)
+		end_of_prog();
+	if (i < 4 || ft_strncmp(argv[1], ".cub", 4))
+		end_of_prog();
+	if (argc == 3 && ft_strncmp(argv[2], "--save", 6))
+		end_of_prog();
+	if (argc == 3 && !ft_strncmp(argv[2], "--save", 6))
+		all->scrn_sht = 1;
 }

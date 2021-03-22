@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/19 19:28:49 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/22 19:20:31 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,35 @@
 # define BMP_CLRUSED		0
 # define BMP_CLRIMPORTANT	0
 
-typedef struct	s_bitmapfileheader
+typedef struct		s_bitmapfileheader
 {
 	char			type[2];
 	unsigned int	size;
 	unsigned int	reserved;
 	unsigned int	offset;
-}				t_bitmapfileheader;
+}					t_bitmapfileheader;
 
-typedef struct	s_bitmapinfo
+typedef struct		s_bitmapinfo
 {
-	int		size;
-	int		width;
-	int		height;
-	short	planes;
-	short	bitcount;
-	int		compression;
-	int		sizeimage;
-	int		xpelspermeter;
-	int		ypelspermeter;
-	int		clrused;
-	int		clrimportant;
-}				t_bitmapinfo;
+	int				size;
+	int				width;
+	int				height;
+	short			planes;
+	short			bitcount;
+	int				compression;
+	int				sizeimage;
+	int				xpelspermeter;
+	int				ypelspermeter;
+	int				clrused;
+	int				clrimportant;
+}					t_bitmapinfo;
 
-typedef struct	s_bmpfile
+typedef struct		s_bmpfile
 {
 	t_bitmapfileheader	fileheader;
 	t_bitmapinfo		info;
 	char				*data;
-}				t_bmpfile;
-
-typedef struct	s_pix
-{
-	void		*img;
-	char		*adrs;
-	int			bits;
-	int			len;
-	int			end;
-}				t_pix;
+}					t_bmpfile;
 
 typedef struct		s_win
 {
@@ -81,9 +72,12 @@ typedef struct		s_win
 	void			*img;
 	void			*win;
 	void			*adrs;
-	int				line;
+	int				len;
 	int				end;
 	int				bpp;
+	int				w;
+	int				h;
+	int				cntr_x;
 }					t_win;
 
 typedef struct		s_pars
@@ -133,6 +127,9 @@ typedef struct		s_dda
 	int				side;
 	int				map_x;
 	int				map_y;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
 }					t_dda;
 
 typedef struct		s_cub
@@ -143,16 +140,24 @@ typedef struct		s_cub
 	t_plr			plr;
 	t_dda			dda;
 	char			**map;
+	int				scrn_sht;
 }					t_cub;
 
 void				init_pars(t_cub *all);
+void				init_ray(t_cub *all, int x);
+void				init_player(t_cub *all);
 void				parser(t_cub *all);
-void				flo_cei(t_cub *all, char *arr, int ch);
+void				valid_flo_cei(t_cub *all, char *arr);
+void				valid_arg(t_cub *all, int argc, char **argv);
 void				memfree(char ***arr);
 void				end_of_prog(void);
 int					key_press(int keycode, t_cub *all);
 int					key_release(int keycode, t_cub *all);
 int					close_prog(int keycode, t_cub *all);
 int					mod_atoi(char *str);
+int					ch_arg(int *arr);
+void				move_ws(t_cub *all);
+void				move_ad(t_cub *all);
+void				rotation(t_cub *all);
 
 #endif
