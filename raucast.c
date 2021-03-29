@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 19:32:49 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/22 19:34:19 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/29 19:18:25 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ char	worldMap[mapWidth][mapHeight]=
 
 int raycaster(void)
 {
-  double posX = 22, posY = 12;  //x and y start position
-  double dirX = -1, dirY = 0; //initial direction vector
-  double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+	double posX = 22, posY = 12;  //x and y start position
+	double dirX = -1, dirY = 0; //initial direction vector
+	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
 
   double time = 0; //time of current frame
   double oldTime = 0; //time of previous frame
@@ -57,17 +57,17 @@ int raycaster(void)
   screen(screenWidth, screenHeight, 0, "Raycaster");
   while(!done())
   {
-    for(int x = 0; x < screenWidth; x++)
-    {
-      //calculate ray position and direction
-      double cameraX = 2 * x / (double)screenWidth - 1; //x-coordinate in camera space
-      double rayDirX = dirX + planeX * cameraX;
-      double rayDirY = dirY + planeY * cameraX;
-      //which box of the map we're in
-      int mapX = (int)posX;
-      int mapY = (int)posY;
+	for(int x = 0; x < screenWidth; x++)
+	{
+		//calculate ray position and direction
+		double cameraX = 2 * x / (double)screenWidth - 1; //x-coordinate in camera space
+		double rayDirX = dirX + planeX * cameraX;
+		double rayDirY = dirY + planeY * cameraX;
+		//which box of the map we're in
+		int mapX = (int)posX;
+		int mapY = (int)posY;
 
-      //length of ray from current position to next x or y-side
+		//length of ray from current position to next x or y-side
       double sideDistX;
       double sideDistY;
 

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/22 17:48:06 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/28 18:50:58 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ void	valid_cart(t_cub *all, int x, int y)
 	if (!ft_strchr("012NSEW", all->map[y + 1][x]))
 		end_of_prog();
 	if (!ft_strchr("012NSEW", all->map[y - 1][x]))
+		end_of_prog();
+	if (!ft_strchr("012NSEW", all->map[y - 1][x + 1]))
+		end_of_prog();
+	if (!ft_strchr("012NSEW", all->map[y + 1][x + 1]))
+		end_of_prog();
+	if (!ft_strchr("012NSEW", all->map[y - 1][x - 1]))
+		end_of_prog();
+	if (!ft_strchr("012NSEW", all->map[y + 1][x - 1]))
 		end_of_prog();
 	if (all->map[y][0] == '\0')
 		end_of_prog();
@@ -69,7 +77,7 @@ void	real_screen_size(t_cub *all)
 		all->pars.w = rw;
 }
 
-void	valid_flo_cei(t_cub *all, char *arr)
+void	valid_flo_cei(t_cub *all, char *arr, int ch)
 {
 	char	**tmp;
 

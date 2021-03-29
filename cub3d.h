@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/23 20:00:07 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/29 20:06:45 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,7 @@
 # include <fcntl.h>
 # include "minilibx_opengl_20191021/mlx.h"
 # include "libft/libft.h"
-# define SCALE				16
-# define BMP_EXTN			".bmp"
-# define BMP_IDENTIFIER		"BM"
-# define BMP_BYTEPERPIXEL	4
-# define BMP_SIZEOFHEADER	54
-# define BMP_SIZEOFINFO		40
-# define BMP_RESERVED		0
-# define BMP_PLANES			1
-# define BMP_BITPERPIXEL	32
-# define BMP_COMPRESSION	0
-# define BMP_SIZEIMAGE		0
-# define BMP_XPELSPERMETER	0
-# define BMP_YPELSPERMETER	0
-# define BMP_CLRUSED		0
-# define BMP_CLRIMPORTANT	0
+# define SCALE		16
 
 typedef struct		s_bitmapfileheader
 {
@@ -61,7 +47,7 @@ typedef struct		s_bitmapinfo
 
 typedef struct		s_bmpfile
 {
-	t_bitmapfileheader	fileheader;
+	t_bitmapfileheader	filehead;
 	t_bitmapinfo		info;
 	char				*data;
 }					t_bmpfile;
@@ -134,11 +120,11 @@ typedef struct		s_dda
 
 typedef struct		s_cub
 {
-	t_pix			pix;
 	t_win			win;
 	t_pars			pars;
 	t_plr			plr;
 	t_dda			dda;
+
 	char			**map;
 	int				scrn_sht;
 }					t_cub;
@@ -147,7 +133,7 @@ void				init_pars(t_cub *all);
 void				init_ray(t_cub *all, int x);
 void				init_player(t_cub *all);
 void				parser(t_cub *all);
-void				valid_flo_cei(t_cub *all, char *arr);
+void				valid_flo_cei(t_cub *all, char *arr, int ch);
 void				valid_arg(t_cub *all, int argc, char **argv);
 void				valid_screen_size(t_cub *all, char **arr);
 void				valid_cart(t_cub *all, int x, int y);
@@ -156,17 +142,19 @@ void				memfree(char ***arr);
 void				end_of_prog(void);
 int					key_press(int keycode, t_cub *all);
 int					key_release(int keycode, t_cub *all);
-int					close_prog(int keycode, t_cub *all);
+int					close_prog(int keycode);
 int					mod_atoi(char *str);
-int					ch_arg(int *arr);
+int					ch_arg(char *arr);
 int					key_release(int keycode, t_cub *all);
 int					key_press(int keycode, t_cub *all);
 void				move_ws(t_cub *all);
 void				move_ad(t_cub *all);
 void				rotation(t_cub *all);
-int					step(t_cub *all);
+void				step(t_cub *all);
 void				dda(t_dda *dda, char **map);
 void				fish_eye(t_dda *dda, t_plr *plr);
-void				height_wall(t_dda *dda, t_plr *plr, t_pars *pars);
+void				height_wall(t_dda *dda, t_pars *pars);
+void				wall(t_cub *all, int x);
+void				ceil_floor(t_cub *all, int x);
 
 #endif

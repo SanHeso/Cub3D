@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_utils(2).c                                     :+:      :+:    :+:   */
+/*   cub_utils_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:19:23 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/20 17:03:54 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/29 19:53:05 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "cub3d.h"
 
 void	memfree(char ***arr)
 {
@@ -23,15 +25,16 @@ void	memfree(char ***arr)
 	free((*arr));
 }
 
-int		close_prog(int keycode, t_cub *all)
+int		close_prog(int keycode)
 {
+	keycode = 0;
 	exit(0);
 	return (0);
 }
 
-int		ch_arg(int *arr)
+int		ch_arg(char *arr)
 {
-	if (arr[0], arr[1], !arr[2])
+	if (arr[0] && arr[1] && !arr[2])
 		return (1);
 	return (0);
 }

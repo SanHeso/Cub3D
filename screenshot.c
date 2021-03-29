@@ -6,30 +6,29 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 18:23:06 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/16 19:13:54 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/28 17:43:42 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void		set_bmp_data_from_image(t_bmpfile *bmp, t_img *data)
+static void		set_bmp_data_from_image(t_bmpfile *bmp, t_win *data)
 {
-	ft_memcpy(bmp->fileheader.type, BMP_IDENTIFIER, sizeof(BMP_IDENTIFIER));
-	bmp->fileheader.size = data->width * data->height * BMP_BYTEPERPIXEL +
-		BMP_SIZEOFHEADER;
-	bmp->fileheader.reserved = 0;
-	bmp->fileheader.offset = BMP_SIZEOFHEADER;
-	bmp->info.size = BMP_SIZEOFINFO;
-	bmp->info.width = data->width;
-	bmp->info.height = -data->height;
-	bmp->info.planes = BMP_PLANES;
-	bmp->info.bitcount = BMP_BITPERPIXEL;
-	bmp->info.compression = BMP_COMPRESSION;
-	bmp->info.sizeimage = BMP_SIZEIMAGE;
-	bmp->info.xpelspermeter = BMP_XPELSPERMETER;
-	bmp->info.ypelspermeter = BMP_YPELSPERMETER;
-	bmp->info.clrused = BMP_CLRUSED;
-	bmp->info.clrimportant = BMP_CLRIMPORTANT;
+	ft_memcpy(bmp->filehead.type, "BM", 2);
+	bmp->filehead.size = data->w * data->h * 4 + 54;
+	bmp->filehead.reserved = 0;
+	bmp->filehead.offset = 54;
+	bmp->info.size = 40;
+	bmp->info.width = data->w;
+	bmp->info.height = -data->h;
+	bmp->info.planes = 1;
+	bmp->info.bitcount = 32;
+	bmp->info.compression = 0;
+	bmp->info.sizeimage = 0;
+	bmp->info.xpelspermeter = 0;
+	bmp->info.ypelspermeter = 0;
+	bmp->info.clrused = 0;
+	bmp->info.clrimportant = 0;
 	bmp->data = data->addr;
 }
 ​
@@ -77,25 +76,25 @@ int				ft_write_bmp(int fd, t_bmpfile *bitmap)
 {
 	if (fd > 0)
 	{
-		if (!(write_bitmapfileheader(fd, &bitmap->fileheader)))
+		if (!(write_bitmapfileheader(fd, &bitmap->filehead)))
 			return (0);
 		if (!(write_bitmapinfo(fd, &bitmap->info)))
 			return (0);
 		if (write(fd, bitmap->data,
-			bitmap->fileheader.size - bitmap->fileheader.offset) < 0)
+			bitmap->filehead.size - bitmap->filehead.offset) < 0)
 			return (0);
 		return (1);
 	}
 	return (0);
 }
 ​
-int				screenshot(t_img *data, const char *name)
+int				screenshot(t_win *data, const char *name)
 {
 	int			fd;
 	char		*file;
 	t_bmpfile	bmp_data;
 ​
-	if (!(file = ft_strjoin(name, BMP_EXTN)))
+	if (!(file = ft_strjoin(name, ".bmp")))
 		return (0);
 	if ((fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR)) < 0)
 		return (0);
