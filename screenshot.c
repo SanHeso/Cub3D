@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 18:23:06 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/28 17:43:42 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/03/30 15:52:07 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void		set_bmp_data_from_image(t_bmpfile *bmp, t_win *data)
 	bmp->info.ypelspermeter = 0;
 	bmp->info.clrused = 0;
 	bmp->info.clrimportant = 0;
-	bmp->data = data->addr;
+	bmp->data = data->adrs;
 }
-​
+
 static int		write_bitmapinfo(int fd, t_bitmapinfo *info)
 {
 	if (write(fd, &info->size, sizeof(info->size)) < 0)
@@ -58,7 +58,7 @@ static int		write_bitmapinfo(int fd, t_bitmapinfo *info)
 		return (0);
 	return (1);
 }
-​
+
 static int		write_bitmapfileheader(int fd, t_bitmapfileheader *hdr)
 {
 	if (write(fd, &hdr->type, sizeof(hdr->type)) < 0)
@@ -71,7 +71,7 @@ static int		write_bitmapfileheader(int fd, t_bitmapfileheader *hdr)
 		return (0);
 	return (1);
 }
-​
+
 int				ft_write_bmp(int fd, t_bmpfile *bitmap)
 {
 	if (fd > 0)
@@ -87,13 +87,13 @@ int				ft_write_bmp(int fd, t_bmpfile *bitmap)
 	}
 	return (0);
 }
-​
+
 int				screenshot(t_win *data, const char *name)
 {
 	int			fd;
 	char		*file;
 	t_bmpfile	bmp_data;
-​
+
 	if (!(file = ft_strjoin(name, ".bmp")))
 		return (0);
 	if ((fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR)) < 0)
