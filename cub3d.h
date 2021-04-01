@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/30 17:01:52 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/01 14:21:43 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,20 @@
 # include <fcntl.h>
 # include "minilibx_opengl_20191021/mlx.h"
 # include "libft/libft.h"
-# define SCALE		16
+# define SCALE 16
+# define ERR "Error!\n"
+# define NO_DIR ERR "No such file or dirctory"
+# define FILE ERR "Invalid file entered"
+# define FLAG ERR "Invalid flag entered"
+# define PARAM_MAP ERR "Invalid map parameters: "
+# define NO_MAL ERR "Memory is not allocated"
+# define RESOLUTION PARAM_MAP "Screen resolution"
+# define MIS_DUB PARAM_MAP "Missing or duplicate"
+# define NO_DIGIT PARAM_MAP "Not a number entered"
+# define NO_ARG ERR "More or less arguments"
+# define MATH ERR "Arithmetic sign introduced"
+# define NO_COLOR ERR "Wrong color code"
+# define NO_MAP ERR "Invalid map"
 
 typedef struct		s_bitmapfileheader
 {
@@ -139,12 +152,12 @@ void				valid_screen_size(t_cub *all, char **arr);
 void				valid_cart(t_cub *all, int x, int y);
 void				real_screen_size(t_cub *all);
 void				memfree(char ***arr);
-void				end_of_prog(void);
+void				end_of_prog(char *s);
 int					key_press(int keycode, t_cub *all);
 int					key_release(int keycode, t_cub *all);
 int					close_prog(int keycode);
 int					mod_atoi(char *str);
-int					ch_arg(char *arr);
+int					ch_arg(char **arr);
 int					key_release(int keycode, t_cub *all);
 int					key_press(int keycode, t_cub *all);
 void				move_ws(t_cub *all);

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/29 19:44:51 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/01 13:56:25 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	init_player(t_cub *all)
 	all->plr.spd = 5.0;
 }
 
-void	end_of_prog(void)
+void	end_of_prog(char *s)
 {
-	perror("ERROR! ");
+	write(1, s, ft_strlen(s));
 	exit(0);
 }
 
@@ -67,7 +67,7 @@ int		mod_atoi(char *str)
 	|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
-		end_of_prog();
+		end_of_prog(MATH);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		u = u * 10 + (str[i] - '0');

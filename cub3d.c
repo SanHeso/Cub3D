@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/29 20:08:46 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/01 19:40:43 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ int		main(int argc, char **argv)
 	init_pars(&all);
 	valid_arg(&all, argc, argv);
 	if ((all.pars.fd = open(argv[1], O_RDONLY)) == -1)
-		end_of_prog();
+		end_of_prog(NO_DIR);
 	init_player(&all);
 	parser(&all);
 
 	win.mlx = mlx_init();
-	win.win = mlx_new_window(win.mlx, all.pars.w, all.pars.h, "first");
 	win.img = mlx_new_image(win.mlx, all.pars.w, all.pars.h);
 	win.adrs = mlx_get_data_addr(win.img, &win.bpp, &win.len, &win.end);
+	win.win = mlx_new_window(win.mlx, all.pars.w, all.pars.h, "first");
 	mlx_hook(win.win, 2, 1L << 0, key_press, &all);
 	mlx_hook(win.win, 3, 1L << 1, key_release, &all);
 	mlx_hook(win.win, 2, 1L << 0, close_prog, &all);
-	//mlx_put_image_to_window(win.mlx, win.win, win.img, 10, 10);
-	//mlx_loop_hook(win.mlx, paint, &all);
+	mlx_put_image_to_window(win.mlx, win.win, win.img, 10, 10);
+	mlx_loop_hook(win.mlx, &paint, &all);
 	mlx_loop(win.mlx);
 	return (argc);
 }

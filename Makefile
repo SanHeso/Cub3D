@@ -6,7 +6,7 @@
 #    By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/09 19:32:06 by hnewman           #+#    #+#              #
-#    Updated: 2021/03/29 19:47:36 by hnewman          ###   ########.fr        #
+#    Updated: 2021/04/01 19:04:44 by hnewman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 				@make -C ${PATH_LIBFT} bonus
 				@ar rcs $(NAME) libft/*.o ${OBJS}
-				$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(NAME)
+				$(CC) $(CFLAGS) -g -lmlx -framework OpenGL -framework AppKit $(NAME)
 				@echo $(CYAN) "$(NAME) COMPLETE!!" $(EOC)
 
 %.o:		%.c
