@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:19:23 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/01 14:21:05 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/05 19:10:26 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		close_prog(int keycode)
 {
 	keycode = 0;
 	exit(0);
-	return (0);
+	return (1);
 }
 
 int		ch_arg(char **arr)
@@ -38,3 +38,4 @@ int		ch_arg(char **arr)
 		return (1);
 	return (0);
 }
+

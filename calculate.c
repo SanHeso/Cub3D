@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:58:43 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/01 19:44:03 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/05 16:25:49 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	dda(t_dda *dda, char **map)
 		if (dda->sd_dst_x < dda->sd_dst_y)
 		{
 			dda->sd_dst_x += dda->dlt_dst_x;
-			dda->map_x = dda->stp_x;
+			dda->map_x += dda->stp_x;
 			dda->side = 0;
 		}
 		else
 		{
-			dda->sd_dst_y -= dda->dlt_dst_y;
-			dda->map_y = dda->stp_y;
+			dda->sd_dst_y += dda->dlt_dst_y;
+			dda->map_y += dda->stp_y;
 			dda->side = 1;
 		}
 		if (map[dda->map_x][dda->map_y] == '1')

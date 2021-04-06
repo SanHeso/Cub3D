@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/01 13:56:25 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/05 19:44:50 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	init_ray(t_cub *all, int x)
 
 void	init_player(t_cub *all)
 {
-	all->plr.pstn_x = -1;
-	all->plr.pstn_x = -1;
+	all->plr.pstn_x = 4;
+	all->plr.pstn_y = 4;
 	all->plr.bttn_w = 0;
 	all->plr.bttn_a = 0;
 	all->plr.bttn_s = 0;

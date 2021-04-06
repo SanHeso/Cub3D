@@ -6,14 +6,14 @@
 #    By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/09 19:32:06 by hnewman           #+#    #+#              #
-#    Updated: 2021/04/01 19:04:44 by hnewman          ###   ########.fr        #
+#    Updated: 2021/04/05 19:02:09 by hnewman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libcub.a
 
 SRCS = cub3d.c cub_utils.c cub_utils_2.c parser.c button_move.c calculate.c \
-validation.c screenshot.c paint.c
+validation.c screenshot.c paint.c validation_2.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -27,18 +27,18 @@ EOC = "\033[0m"
 
 CC = @gcc
 
-CFLAGS = -Wall -Werror -Wextra
+# CFLAGS = -g -Wall -Werror -Wextra
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
 				@make -C ${PATH_LIBFT} bonus
 				@ar rcs $(NAME) libft/*.o ${OBJS}
-				$(CC) $(CFLAGS) -g -lmlx -framework OpenGL -framework AppKit $(NAME)
+				$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(NAME)
 				@echo $(CYAN) "$(NAME) COMPLETE!!" $(EOC)
 
 %.o:		%.c
-				$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+				$(CC) -g  -Imlx -c $< -o $@
 
 clean:
 				@rm -f ${OBJS}

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/01 14:21:43 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/06 20:03:42 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,21 @@
 # include "minilibx_opengl_20191021/mlx.h"
 # include "libft/libft.h"
 # define SCALE 16
-# define ERR "Error!\n"
-# define NO_DIR ERR "No such file or dirctory"
-# define FILE ERR "Invalid file entered"
-# define FLAG ERR "Invalid flag entered"
+# define ERR "Error! "
+# define NO_DIR ERR "No such file or dirctory\n"
+# define FILE ERR "Invalid file entered\n"
+# define FLAG ERR "Invalid flag entered\n"
 # define PARAM_MAP ERR "Invalid map parameters: "
-# define NO_MAL ERR "Memory is not allocated"
-# define RESOLUTION PARAM_MAP "Screen resolution"
-# define MIS_DUB PARAM_MAP "Missing or duplicate"
-# define NO_DIGIT PARAM_MAP "Not a number entered"
-# define NO_ARG ERR "More or less arguments"
-# define MATH ERR "Arithmetic sign introduced"
-# define NO_COLOR ERR "Wrong color code"
-# define NO_MAP ERR "Invalid map"
+# define NO_MAL ERR "Memory is not allocated\n"
+# define RESOLUTION PARAM_MAP "Screen resolution\n"
+# define MIS_DUB PARAM_MAP "Missing or duplicate\n"
+# define NO_DIGIT PARAM_MAP "Not a number entered\n"
+# define NO_ARG ERR "More or less arguments\n"
+# define MATH ERR "Arithmetic sign introduced\n"
+# define NO_COLOR ERR "Wrong color code\n"
+# define NO_MAP ERR "Invalid map\n"
+# define MORE_PLR ERR "Many players\n"
+# define NO_PLR ERR "The player is not displayed on the map\n"
 
 typedef struct		s_bitmapfileheader
 {
@@ -149,7 +151,7 @@ void				parser(t_cub *all);
 void				valid_flo_cei(t_cub *all, char *arr, int ch);
 void				valid_arg(t_cub *all, int argc, char **argv);
 void				valid_screen_size(t_cub *all, char **arr);
-void				valid_cart(t_cub *all, int x, int y);
+void				valid_cart(t_cub *all, int y, int x);
 void				real_screen_size(t_cub *all);
 void				memfree(char ***arr);
 void				end_of_prog(char *s);
@@ -169,5 +171,6 @@ void				fish_eye(t_dda *dda, t_plr *plr);
 void				height_wall(t_dda *dda, t_pars *pars);
 void				wall(t_cub *all, int x);
 void				ceil_floor(t_cub *all, int x);
+void				drctn_plr(t_cub *all, int ch);
 
 #endif

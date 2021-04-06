@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:52:08 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/30 15:55:04 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/05 18:29:05 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ceil_floor(t_cub *all, int x)
 	while (++y < all->pars.h - 1)
 		ft_mlx_pixel_put(&all->win, x, all->dda.draw_start, 0x00FF00);
 }
+
 // void	block(t_pix *data, int x, int y)
 // {
 // 	int xp;

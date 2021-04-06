@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/01 18:55:27 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/05 17:32:51 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	parser(t_cub *all)
 		arr = ft_split(line, ' ');
 		distribution(all, arr);
 		memfree(&arr);
-	}
+	} 
 	free(line);
 
 	while (get_next_line(all->pars.fd, &line))

@@ -6,25 +6,13 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/01 18:55:11 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/06 20:04:23 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	real_screen_size(t_cub *all)
-{
-	// int		rw;
-	// int		rh;
-
-	// mlx_get_screen_size(&rw, &rh);
-		all->pars.h = 1080;
-		all->pars.w = 1920;
-	// if (all->pars.h > rh)
-	// if (all->pars.w > rw)
-}
-
-void	valid_cart(t_cub *all, int x, int y)
+void	valid_cart(t_cub *all, int y, int x)
 {
 	if ((size_t)all->map[y][x] > ft_strlen(all->map[y]) ||
 	(size_t)all->map[y][x] > ft_strlen(all->map[y + 1]) ||
@@ -49,8 +37,6 @@ void	valid_cart(t_cub *all, int x, int y)
 	if (!ft_strchr("012NSEW", all->map[y - 1][x - 1]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y + 1][x - 1]))
-		end_of_prog(NO_MAP);
-	if (all->map[y][0] == '\0')
 		end_of_prog(NO_MAP);
 }
 
@@ -116,4 +102,34 @@ void	valid_arg(t_cub *all, int argc, char **argv)
 		end_of_prog(FLAG);
 	if (argc == 3 && !ft_strncmp(argv[2], "--save", 6))
 		all->scrn_sht = 1;
+}
+
+void	validate(t_cub *all)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (all->map[++i])
+	{
+		if (all->map[i][0] == '\0')
+			end_of_prog(NO_MAP);
+		j = -1;
+		while (all->map[i][++j])
+		{
+			if (ft_strchr("02NSWE", all->map[i][j]))
+				valid_cart(all, i, j);
+			if (ft_strchr("NSWE", all->map[i][j]))
+			{
+				if (all->plr.pln_x != -1)
+					end_of_prog(MORE_PLR);
+				drctn_plr(all, all->map[i][j]);
+				all->map[i][j] = '0';
+				all->plr.pstn_x = i + 0.5;
+				all->plr.pstn_y = j + 0.5;
+			}
+		}
+	}
+	if (all->plr.pln_x == -1)
+		end_of_prog(NO_PLR);
 }

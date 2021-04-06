@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/01 19:40:43 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/05 19:47:02 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		paint(t_cub *all)
 
 int		main(int argc, char **argv)
 {
-	t_win	win;
 	t_cub	all;
 
 	init_pars(&all);
@@ -54,15 +53,15 @@ int		main(int argc, char **argv)
 	init_player(&all);
 	parser(&all);
 
-	win.mlx = mlx_init();
-	win.img = mlx_new_image(win.mlx, all.pars.w, all.pars.h);
-	win.adrs = mlx_get_data_addr(win.img, &win.bpp, &win.len, &win.end);
-	win.win = mlx_new_window(win.mlx, all.pars.w, all.pars.h, "first");
-	mlx_hook(win.win, 2, 1L << 0, key_press, &all);
-	mlx_hook(win.win, 3, 1L << 1, key_release, &all);
-	mlx_hook(win.win, 2, 1L << 0, close_prog, &all);
-	mlx_put_image_to_window(win.mlx, win.win, win.img, 10, 10);
-	mlx_loop_hook(win.mlx, &paint, &all);
-	mlx_loop(win.mlx);
+	all.win.mlx = mlx_init();
+	all.win.img = mlx_new_image(all.win.mlx, all.pars.w, all.pars.h);
+	all.win.adrs = mlx_get_data_addr(all.win.img, &all.win.bpp, &all.win.len, &all.win.end);
+	all.win.win = mlx_new_window(all.win.mlx, all.pars.w, all.pars.h, "first");
+	mlx_hook(all.win.win, 2, 1L << 0, key_press, &all);
+	mlx_hook(all.win.win, 3, 1L << 1, key_release, &all);
+	mlx_hook(all.win.win, 17, 1L << 0, close_prog, &all);
+	// mlx_put_image_to_window(win.mlx, win.win, win.img, 10, 10);
+	mlx_loop_hook(all.win.mlx, &paint, &all);
+	mlx_loop(all.win.mlx);
 	return (argc);
 }
