@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:58:43 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/05 16:25:49 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/09 20:19:58 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	step(t_cub *all)
 	else
 	{
 		all->dda.stp_x = 1;
-		all->dda.sd_dst_x = (all->plr.pstn_x + 1.0 - all->plr.pstn_x) *
+		all->dda.sd_dst_x = (all->dda.map_x + 1.0 - all->plr.pstn_x) *
 		all->dda.dlt_dst_x;
 	}
 	if (all->dda.r_dr_y < 0)
@@ -35,13 +35,21 @@ void	step(t_cub *all)
 	else
 	{
 		all->dda.stp_y = 1;
-		all->dda.sd_dst_y = (all->plr.pstn_y + 1.0 - all->plr.pstn_y) *
+		all->dda.sd_dst_y = (all->dda.map_y + 1.0 - all->plr.pstn_y) *
 		all->dda.dlt_dst_y;
 	}
 }
 
-void	dda(t_dda *dda, char **map)
+void	alg_dda(t_dda *dda, char **map)
 {
+	// int		i;
+
+	// i = 0;
+	// while (map[i])
+	// {
+	// 	ft_putendl_fd(map[i], 1);
+	// 	i++;
+	// }
 	while(dda->hit == 0)
 	{
 		if (dda->sd_dst_x < dda->sd_dst_y)
@@ -64,11 +72,9 @@ void	dda(t_dda *dda, char **map)
 void	fish_eye(t_dda *dda, t_plr *plr)
 {
 	if (dda->side == 0)
-		dda->prp_wll_dst = (dda->map_x - plr->pstn_x + (1 - dda->stp_x) / 2)
-		/ dda->r_dr_x;
+		dda->prp_wll_dst = (dda->map_x - plr->pstn_x + (1 - dda->stp_x) / 2) / dda->r_dr_x;
 	else
-		dda->prp_wll_dst = (dda->map_y - plr->pstn_y + (1 - dda->stp_y) / 2)
-		/ dda->r_dr_y;
+		dda->prp_wll_dst = (dda->map_y - plr->pstn_y + (1 - dda->stp_y) / 2) / dda->r_dr_y;
 }
 
 void	height_wall(t_dda *dda, t_pars *pars)

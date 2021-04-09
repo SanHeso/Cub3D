@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/05 19:47:02 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:55:30 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	assembly(t_cub *all)
 	{
 		init_ray(all, x);
 		step(all);
-		dda(&all->dda, all->map);
+		alg_dda(&all->dda, all->map);
 		fish_eye(&all->dda, &all->plr);
 		height_wall(&all->dda, &all->pars);
 		wall(all, x);
@@ -63,5 +63,4 @@ int		main(int argc, char **argv)
 	// mlx_put_image_to_window(win.mlx, win.win, win.img, 10, 10);
 	mlx_loop_hook(all.win.mlx, &paint, &all);
 	mlx_loop(all.win.mlx);
-	return (argc);
 }

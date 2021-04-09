@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/06 20:04:23 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:32:12 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 void	valid_cart(t_cub *all, int y, int x)
 {
-	if ((size_t)all->map[y][x] > ft_strlen(all->map[y]) ||
-	(size_t)all->map[y][x] > ft_strlen(all->map[y + 1]) ||
-	(size_t)all->map[y][x] > ft_strlen(all->map[y - 1]))
-		end_of_prog(NO_MAP);
-	if (x < 1 || y < 1)
-		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y][x]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y][x + 1]))
@@ -37,6 +31,11 @@ void	valid_cart(t_cub *all, int y, int x)
 	if (!ft_strchr("012NSEW", all->map[y - 1][x - 1]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y + 1][x - 1]))
+		end_of_prog(NO_MAP);
+	if (x > ft_strlen(all->map[y]) || x > ft_strlen(all->map[y + 1]) ||
+	x > ft_strlen(all->map[y - 1]))
+		end_of_prog(NO_MAP);
+	if (x < 1 || y < 1)
 		end_of_prog(NO_MAP);
 }
 
@@ -121,7 +120,7 @@ void	validate(t_cub *all)
 				valid_cart(all, i, j);
 			if (ft_strchr("NSWE", all->map[i][j]))
 			{
-				if (all->plr.pln_x != -1)
+				if (all->plr.pstn_x != -1)
 					end_of_prog(MORE_PLR);
 				drctn_plr(all, all->map[i][j]);
 				all->map[i][j] = '0';

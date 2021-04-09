@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/05 17:32:51 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/09 20:20:58 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,18 @@ void	make_cart(t_list **head, t_cub *all, int size)
 	i = 0;
 	while (tmp)
 	{
-		all->map[i++] = tmp->content;
+		all->map[i] = ft_strdup(tmp->content);
 		tmp = tmp->next;
+		i++;
 	}
 	i = 0;
-	while (all->map[i++])
+	validate(all);
+	while (all->map[i])
 	{
 		ft_putendl_fd(all->map[i], 1);
-		free(all->map[i]);
+		i++;
 	}
+	ft_lstclear(head, free);
 }
 
 void	distribution(t_cub *all, char **arr)
@@ -61,14 +64,17 @@ void	parser(t_cub *all)
 	char	**arr;
 	t_list	*head;
 
-	while (get_next_line(all->pars.fd, &line) && line[0] != '\0')
+	while ((get_next_line(all->pars.fd, &line)) != -1 && !transit_to_map(line))
 	{
-		arr = ft_split(line, ' ');
-		distribution(all, arr);
-		memfree(&arr);
-	} 
+		if (line[0] != '\0')
+		{
+			arr = ft_split(line, ' ');
+			distribution(all, arr);
+			memfree(&arr);
+		}
+	}
+	ft_lstadd_back(&head, ft_lstnew(line));
 	free(line);
-
 	while (get_next_line(all->pars.fd, &line))
 	{
 		ft_lstadd_back(&head, ft_lstnew(line));

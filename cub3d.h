@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/06 20:03:42 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:51:56 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void				valid_flo_cei(t_cub *all, char *arr, int ch);
 void				valid_arg(t_cub *all, int argc, char **argv);
 void				valid_screen_size(t_cub *all, char **arr);
 void				valid_cart(t_cub *all, int y, int x);
+void				validate(t_cub *all);
 void				real_screen_size(t_cub *all);
 void				memfree(char ***arr);
 void				end_of_prog(char *s);
@@ -166,11 +167,12 @@ void				move_ws(t_cub *all);
 void				move_ad(t_cub *all);
 void				rotation(t_cub *all);
 void				step(t_cub *all);
-void				dda(t_dda *dda, char **map);
+void				alg_dda(t_dda *dda, char **map);
 void				fish_eye(t_dda *dda, t_plr *plr);
 void				height_wall(t_dda *dda, t_pars *pars);
 void				wall(t_cub *all, int x);
 void				ceil_floor(t_cub *all, int x);
 void				drctn_plr(t_cub *all, int ch);
+int					transit_to_map(char *line);
 
 #endif
