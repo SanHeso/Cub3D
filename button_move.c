@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:58:06 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/05 16:45:06 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/10 15:47:28 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,19 @@ void	move_ws(t_cub *all)
 	if (all->plr.bttn_w)
 	{
 		if (all->map[(int)(all->plr.pstn_x + all->plr.drctn_x * all->plr.spd)]
-		[(int)all->plr.pstn_y])
+		[(int)all->plr.pstn_y] == '0')
 			all->plr.pstn_x += all->plr.drctn_x * all->plr.spd;
 		if (all->map[(int)all->plr.pstn_x]
-		[(int)(all->plr.pstn_y + all->plr.drctn_y * all->plr.spd)])
+		[(int)(all->plr.pstn_y + all->plr.drctn_y * all->plr.spd)] == '0')
 			all->plr.pstn_y += all->plr.drctn_y * all->plr.spd;
 	}
 	if (all->plr.bttn_s)
 	{
 		if (all->map[(int)(all->plr.pstn_x - all->plr.drctn_x * all->plr.spd)]
-		[(int)all->plr.pstn_y])
+		[(int)all->plr.pstn_y] == '0')
 			all->plr.pstn_x -= all->plr.drctn_x * all->plr.spd;
 		if (all->map[(int)all->plr.pstn_x]
-		[(int)(all->plr.pstn_y - all->plr.drctn_y * all->plr.spd)])
+		[(int)(all->plr.pstn_y - all->plr.drctn_y * all->plr.spd)] == '0')
 			all->plr.pstn_y -= all->plr.drctn_y * all->plr.spd;
 	}
 }
@@ -93,20 +93,20 @@ void	move_ad(t_cub *all)
 {
 	if (all->plr.bttn_a)
 	{
-		if (all->map[(int)(all->plr.pstn_x - all->plr.pln_x * all->plr.spd)]
-		[(int)all->plr.pstn_y])
-			all->plr.pstn_x += all->plr.pln_x * all->plr.spd;
+		if (all->map[(int)(all->plr.pstn_x - all->plr.drctn_y * all->plr.spd)]
+		[(int)all->plr.pstn_y] == '0')
+			all->plr.pstn_x -= all->plr.drctn_y * all->plr.spd;
 		if (all->map[(int)all->plr.pstn_x]
-		[(int)(all->plr.pstn_y + all->plr.pln_y * all->plr.spd)])
-			all->plr.pstn_y += all->plr.pln_y * all->plr.spd;
+		[(int)(all->plr.pstn_y + all->plr.drctn_x * all->plr.spd)] == '0')
+			all->plr.pstn_y += all->plr.drctn_x * all->plr.spd;
 	}
 	if (all->plr.bttn_d)
 	{
-		if (all->map[(int)(all->plr.pstn_x - all->plr.pln_x * all->plr.spd)]
-		[(int)all->plr.pstn_y])
-			all->plr.pstn_x -= all->plr.pln_x * all->plr.spd;
+		if (all->map[(int)(all->plr.pstn_x + all->plr.drctn_y * all->plr.spd)]
+		[(int)all->plr.pstn_y] == '0')
+			all->plr.pstn_x += all->plr.drctn_y * all->plr.spd;
 		if (all->map[(int)all->plr.pstn_x]
-		[(int)(all->plr.pstn_y - all->plr.pln_y * all->plr.spd)])
-			all->plr.pstn_y -= all->plr.pln_y * all->plr.spd;
+		[(int)(all->plr.pstn_y - all->plr.drctn_x * all->plr.spd)] == '0')
+			all->plr.pstn_y -= all->plr.drctn_x * all->plr.spd;
 	}
 }

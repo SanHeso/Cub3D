@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:52:08 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/09 20:26:52 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/10 14:41:15 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ int		ft_mlx_pixel_get(t_win *data, int x, int y)
 
 void	wall(t_cub *all, int x)
 {
-	while (all->dda.draw_start < all->dda.draw_end)
+	int y;
+
+	y = all->dda.draw_start;
+	while (y < all->dda.draw_end)
 	{
-		ft_mlx_pixel_put(&all->win, x, all->dda.draw_start, 0xFF9100);
-		all->dda.draw_start++;
+		ft_mlx_pixel_put(&all->win, x, y, 0xFF9100);
+		y++;
 	}
 }
 
@@ -48,11 +51,11 @@ void	ceil_floor(t_cub *all, int x)
 {
 	int		y;
 
-	// y = -1;
-	// while (++y < all->dda.draw_start)
-	// 	ft_mlx_pixel_put(&all->win, x, all->dda.draw_start, 0x24A6C9);
-	y = all->dda.draw_end;
-	while (++y < all->pars.h-1)
+	y = -1;
+	while (++y < all->dda.draw_start)
+		ft_mlx_pixel_put(&all->win, x, y, 0x24A6C9);
+	y = all->dda.draw_end - 1;
+	while (++y < all->pars.h - 1)
 		ft_mlx_pixel_put(&all->win, x, y, 0x00FF00);
 }
 

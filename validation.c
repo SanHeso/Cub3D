@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/09 19:32:12 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/10 15:32:47 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,8 @@ void	validate(t_cub *all)
 					end_of_prog(MORE_PLR);
 				drctn_plr(all, all->map[i][j]);
 				all->map[i][j] = '0';
-				all->plr.pstn_x = i + 0.5;
-				all->plr.pstn_y = j + 0.5;
+				all->plr.pstn_x = i + 0.45;
+				all->plr.pstn_y = j + 0.45;
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/09 20:29:06 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/10 14:04:44 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_player(t_cub *all)
 	all->plr.bttn_s = 0;
 	all->plr.bttn_d = 0;
 	all->plr.rttn = 0;
-	all->plr.rttn_spd = 0.17;
+	all->plr.rttn_spd = 0.07;
 	all->plr.spd = 0.08;
 }
 

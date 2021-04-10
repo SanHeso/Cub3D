@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/09 19:51:56 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/10 21:30:02 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ typedef struct		s_dda
 	double			dlt_dst_x;
 	double			dlt_dst_y;
 	double			prp_wll_dst;
+	double			wall_x;
+	double			step;
 	int				stp_x;
 	int				stp_y;
 	int				hit;
@@ -131,15 +133,21 @@ typedef struct		s_dda
 	int				line_height;
 	int				draw_start;
 	int				draw_end;
+	int				tex_x;
+
 }					t_dda;
 
 typedef struct		s_cub
 {
 	t_win			win;
+	t_win			no;
+	t_win			so;
+	t_win			we;
+	t_win			ea;
+	t_win			s;
 	t_pars			pars;
 	t_plr			plr;
 	t_dda			dda;
-
 	char			**map;
 	int				scrn_sht;
 }					t_cub;
