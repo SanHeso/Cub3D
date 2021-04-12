@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:40:22 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/09 15:37:39 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/12 19:33:54 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	real_screen_size(t_cub *all)
 {
-	// int		rw;
-	// int		rh;
+	int		rw;
+	int		rh;
 
-	// mlx_get_screen_size(&rw, &rh);
-		all->pars.h = 1080;
-		all->pars.w = 1920;
-	// if (all->pars.h > rh)
-	// if (all->pars.w > rw)
+	mlx_get_screen_size(&rw, &rh);
+	if (all->pars.h > rh)
+		all->pars.h = rh;
+	if (all->pars.w > rw)
+		all->pars.w = rw;
 }
 
 void	drctn_plr(t_cub *all, int ch)
@@ -48,3 +48,12 @@ void	drctn_plr(t_cub *all, int ch)
 	}
 }
 
+void	valid_texture(t_win *tex, char **mas, char **root)
+{
+	tex->mlx = mlx_init();
+	*root = ft_strdup(mas[1]);
+	if (!(tex->img = mlx_xpm_file_to_image(&tex->mlx, *root, tex->t_wdth,
+	tex->t_hght)))
+		end_of_prog(NO_TEX);
+	tex->adrs = mlx_get_data_addr(tex->img, &tex->bpp, tex->len, tex->end);
+}

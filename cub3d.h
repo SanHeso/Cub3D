@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/10 21:30:02 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/12 20:12:35 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define NO_MAP ERR "Invalid map\n"
 # define MORE_PLR ERR "Many players\n"
 # define NO_PLR ERR "The player is not displayed on the map\n"
+# define NO_TEX ERR "No texture found\n"
 
 typedef struct		s_bitmapfileheader
 {
@@ -76,8 +77,8 @@ typedef struct		s_win
 	int				len;
 	int				end;
 	int				bpp;
-	int				w;
-	int				h;
+	int				t_wdth;
+	int				t_hght;
 	int				cntr_x;
 }					t_win;
 
@@ -124,6 +125,7 @@ typedef struct		s_dda
 	double			prp_wll_dst;
 	double			wall_x;
 	double			step;
+	double			tex_pstn;
 	int				stp_x;
 	int				stp_y;
 	int				hit;
@@ -134,6 +136,8 @@ typedef struct		s_dda
 	int				draw_start;
 	int				draw_end;
 	int				tex_x;
+	int				tex_y;
+	int				col;
 
 }					t_dda;
 
@@ -160,6 +164,7 @@ void				valid_flo_cei(t_cub *all, char *arr, int ch);
 void				valid_arg(t_cub *all, int argc, char **argv);
 void				valid_screen_size(t_cub *all, char **arr);
 void				valid_cart(t_cub *all, int y, int x);
+void				valid_texture(t_win *tex, char **mas, char **root);
 void				validate(t_cub *all);
 void				real_screen_size(t_cub *all);
 void				memfree(char ***arr);
@@ -178,9 +183,12 @@ void				step(t_cub *all);
 void				alg_dda(t_dda *dda, char **map);
 void				fish_eye(t_dda *dda, t_plr *plr);
 void				height_wall(t_dda *dda, t_pars *pars);
-void				wall(t_cub *all, int x);
+void				wall(t_cub *all, int x, int y);
 void				ceil_floor(t_cub *all, int x);
 void				drctn_plr(t_cub *all, int ch);
 int					transit_to_map(char *line);
+void				wall_hit(t_cub *all);
+void				texture(t_cub *all);
+void				texture_size(t_cub *all, int width, int height);
 
 #endif

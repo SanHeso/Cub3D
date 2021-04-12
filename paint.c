@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:52:08 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/10 14:41:15 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/12 20:16:29 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,31 @@ int		ft_mlx_pixel_get(t_win *data, int x, int y)
 	return (col);
 }
 
-void	wall(t_cub *all, int x)
+void	wall(t_cub *all, int x, int y)
 {
-	int y;
-
-	y = all->dda.draw_start;
-	while (y < all->dda.draw_end)
+	while (++y < all->dda.draw_end)
 	{
-		ft_mlx_pixel_put(&all->win, x, y, 0xFF9100);
-		y++;
+		all->dda.tex_y = (int)all->dda.tex_pstn;
+		all->dda.tex_pstn += all->dda.step;
+		if (all->dda.side == 1)
+		{
+			if (all->dda.stp_y > 0)
+				all->dda.col = ft_mlx_pixel_get(&all->ea, all->dda.tex_x,
+				all->dda.tex_y);
+			if (all->dda.stp_y < 0)
+				all->dda.col = ft_mlx_pixel_get(&all->we, all->dda.tex_x,
+				all->dda.tex_y);
+		}
+		else
+		{
+			if (all->dda.stp_x > 0)
+				all->dda.col = ft_mlx_pixel_get(&all->no, all->dda.tex_x,
+				all->dda.tex_y);
+			if (all->dda.stp_y < 0)
+				all->dda.col = ft_mlx_pixel_get(&all->so, all->dda.tex_x,
+				all->dda.tex_y);
+		}
+		ft_mlx_pixel_put(&all->win, x, y, all->dda.col);
 	}
 }
 
@@ -58,21 +74,3 @@ void	ceil_floor(t_cub *all, int x)
 	while (++y < all->pars.h - 1)
 		ft_mlx_pixel_put(&all->win, x, y, 0x00FF00);
 }
-
-// void	block(t_pix *data, int x, int y)
-// {
-// 	int xp;
-// 	int yp;
-
-// 	yp = 0;
-// 	while (yp < SCALE)
-// 	{
-// 		xp = 0;
-// 		while (xp < SCALE)
-// 		{
-// 			ft_mlx_pixel_put(data, xp + x, yp + y, 0x0000FF00);
-// 			xp++;
-// 		}
-// 		yp++;
-// 	}
-// }

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:58:43 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/09 20:19:58 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/12 19:29:53 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@ void	step(t_cub *all)
 
 void	alg_dda(t_dda *dda, char **map)
 {
-	// int		i;
-
-	// i = 0;
-	// while (map[i])
-	// {
-	// 	ft_putendl_fd(map[i], 1);
-	// 	i++;
-	// }
 	while(dda->hit == 0)
 	{
 		if (dda->sd_dst_x < dda->sd_dst_y)
@@ -72,9 +64,11 @@ void	alg_dda(t_dda *dda, char **map)
 void	fish_eye(t_dda *dda, t_plr *plr)
 {
 	if (dda->side == 0)
-		dda->prp_wll_dst = (dda->map_x - plr->pstn_x + (1 - dda->stp_x) / 2) / dda->r_dr_x;
+		dda->prp_wll_dst = (dda->map_x - plr->pstn_x + (1 - dda->stp_x) / 2) /
+		dda->r_dr_x;
 	else
-		dda->prp_wll_dst = (dda->map_y - plr->pstn_y + (1 - dda->stp_y) / 2) / dda->r_dr_y;
+		dda->prp_wll_dst = (dda->map_y - plr->pstn_y + (1 - dda->stp_y) / 2) /
+		dda->r_dr_y;
 }
 
 void	height_wall(t_dda *dda, t_pars *pars)

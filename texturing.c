@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:36:56 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/10 21:31:54 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/12 18:57:26 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	wall_hit(t_cub *all)
 {
 	if (all->dda.side == 0)
-		all->dda.wall_x = all->plr.pstn_y + all->dda.prp_wll_dst * all->dda.r_dr_y;
+		all->dda.wall_x = all->plr.pstn_y + all->dda.prp_wll_dst *
+		all->dda.r_dr_y;
 	else
-		all->dda.wall_x = all->plr.pstn_x + all->dda.prp_wll_dst * all->dda.r_dr_x;
+		all->dda.wall_x = all->plr.pstn_x + all->dda.prp_wll_dst *
+		all->dda.r_dr_x;
 	all->dda.wall_x -= floor((all->dda.wall_x));
 }
 
@@ -36,13 +38,15 @@ void	texture(t_cub *all)
 	if (all->dda.side == 1)
 	{
 		if (all->dda.stp_y > 0)
-			texture_size(all, all->ea.w, all->ea.h);
+			texture_size(all, all->ea.t_wdth, all->ea.t_hght);
 		if (all->dda.stp_y < 0)
-			texture_size(all, all->we.w, all->we.h);
+			texture_size(all, all->we.t_wdth, all->we.t_hght);
 	}
 	else
 		if (all->dda.stp_x > 0)
-			texture_size(all, all->no.w, all->no.h);
+			texture_size(all, all->no.t_wdth, all->no.t_hght);
 		if (all->dda.stp_x < 0)
-			texture_size(all, all->so.w, all->so.h);
+			texture_size(all, all->so.t_wdth, all->so.t_hght);
+	all->dda.tex_pstn = (all->dda.draw_start - all->pars.h / 2 +
+	all->dda.line_height / 2) *all->dda.step;
 }
