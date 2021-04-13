@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:36:56 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/12 18:57:26 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/13 15:59:29 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	texture(t_cub *all)
 		if (all->dda.stp_x < 0)
 			texture_size(all, all->so.t_wdth, all->so.t_hght);
 	all->dda.tex_pstn = (all->dda.draw_start - all->pars.h / 2 +
-	all->dda.line_height / 2) *all->dda.step;
+	all->dda.line_height / 2) * all->dda.step;
 }

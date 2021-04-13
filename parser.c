@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/12 19:40:02 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/13 15:54:34 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,16 @@ void	distribution(t_cub *all, char **arr)
 	if (!ft_strncmp(arr[0], "R", 1) && !all->pars.h && !arr[3])
 		valid_screen_size(all, arr);
 	else if (!ft_strncmp(arr[0], "NO", 2) && !all->pars.no && ch_arg(arr))
-		valid_texture(&all->no, arr, all->pars.no);
+		valid_texture(&all->no, arr, &all->pars.no);
 	else if (!ft_strncmp(arr[0], "SO", 2) && !all->pars.so && ch_arg(arr))
-		valid_texture(&all->so, arr, all->pars.so);
+		valid_texture(&all->so, arr, &all->pars.so);
 	else if (!ft_strncmp(arr[0], "WE", 2) && !all->pars.we && ch_arg(arr))
-		valid_texture(&all->we, arr, all->pars.we);
+		valid_texture(&all->we, arr, &all->pars.we);
 	else if (!ft_strncmp(arr[0], "EA", 2) && !all->pars.ea && ch_arg(arr))
-		valid_texture(&all->ea, arr, all->pars.ea);
+		valid_texture(&all->ea, arr, &all->pars.ea);
 	else if (!ft_strncmp(arr[0], "S", 1) && !all->pars.s && ch_arg(arr))
-		valid_texture(&all->s, arr, all->pars.s);
+		all->pars.s = arr[1];
+		// valid_texture(&all->s, arr, &all->pars.s);
 	else if (!ft_strncmp(arr[0], "F", 1) && !all->pars.f[0] && ch_arg(arr))
 		valid_flo_cei(all, arr[1], 'F');
 	else if (!ft_strncmp(arr[0], "C", 1) && !all->pars.c[0] && ch_arg(arr))

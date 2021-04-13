@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 18:23:06 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/30 15:52:07 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/13 15:18:30 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static void		set_bmp_data_from_image(t_bmpfile *bmp, t_win *data)
 {
 	ft_memcpy(bmp->filehead.type, "BM", 2);
-	bmp->filehead.size = data->w * data->h * 4 + 54;
+	bmp->filehead.size = data->t_wdth * data->t_hght * 4 + 54;
 	bmp->filehead.reserved = 0;
 	bmp->filehead.offset = 54;
 	bmp->info.size = 40;
-	bmp->info.width = data->w;
-	bmp->info.height = -data->h;
+	bmp->info.width = data->t_wdth;
+	bmp->info.height = -data->t_hght;
 	bmp->info.planes = 1;
 	bmp->info.bitcount = 32;
 	bmp->info.compression = 0;

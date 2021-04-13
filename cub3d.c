@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/12 20:25:50 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/13 15:49:56 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	assembly(t_cub *all)
 		alg_dda(&all->dda, all->map);
 		fish_eye(&all->dda, &all->plr);
 		height_wall(&all->dda, &all->pars);
+		wall_hit(all);
+		texture(all);
 		wall(all, x, all->dda.draw_start -1);
 		ceil_floor(all, x);
 		buf[x] = all->dda.prp_wll_dst;

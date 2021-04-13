@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/12 20:12:35 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/13 14:55:49 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,3 +192,4 @@ void				texture(t_cub *all);
 void				texture_size(t_cub *all, int width, int height);
 
 #endif
+ 
