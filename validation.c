@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/13 17:04:48 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/14 19:20:17 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	validate(t_cub *all)
 	int		j;
 
 	i = -1;
+	sp_sum(all);
 	while (all->map[++i])
 	{
 		if (all->map[i][0] == '\0')
@@ -118,15 +119,7 @@ void	validate(t_cub *all)
 		{
 			if (ft_strchr("02NSWE", all->map[i][j]))
 				valid_cart(all, i, j);
-			if (ft_strchr("NSWE", all->map[i][j]))
-			{
-				if (all->plr.pstn_x != -1)
-					end_of_prog(MORE_PLR);
-				drctn_plr(all, all->map[i][j]);
-				all->map[i][j] = '0';
-				all->plr.pstn_x = i + 0.45;
-				all->plr.pstn_y = j + 0.45;
-			}
+			pos_sp_plr(all, i, j);
 		}
 	}
 	if (all->plr.pln_x == -1)

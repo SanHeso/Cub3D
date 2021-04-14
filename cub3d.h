@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/13 14:55:49 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/14 19:54:00 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,32 @@ typedef struct		s_dda
 	int				tex_y;
 	int				col;
 
+	double			sp_x;
+	double			sp_x;
+	double			inv_det;
+	double			tr_form_x;
+	double			tr_form_y;
+	int				sp_scrn_x;
+	int				sp_h;
+	int				sp_w;
+	int				draw_start_y;
+	int				draw_start_x;
+	int				draw_end_y;
+	int				draw_end_x;
+	int				stripe;
 }					t_dda;
+
+typedef struct		s_sp
+{
+	float			x;
+	float			y;
+}					t_sp;
+
+typedef struct		s_sort
+{
+	double			first;
+	int				second;
+}					t_sort;
 
 typedef struct		s_cub
 {
@@ -152,7 +177,9 @@ typedef struct		s_cub
 	t_pars			pars;
 	t_plr			plr;
 	t_dda			dda;
+	t_sprt			*sp;
 	char			**map;
+	int				sp_count;
 	int				scrn_sht;
 }					t_cub;
 
@@ -190,6 +217,8 @@ int					transit_to_map(char *line);
 void				wall_hit(t_cub *all);
 void				texture(t_cub *all);
 void				texture_size(t_cub *all, int width, int height);
+void				sp_sum(t_cub *all);
+void				order_sort(t_sort *order, int qua);
+void				pos_sp_plr(t_cub *all, int i, int j);
 
 #endif
- 

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:40:22 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/13 15:34:42 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/14 19:18:35 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,46 @@ void	valid_texture(t_win *tex, char **mas, char **root)
 	&tex->t_hght)))
 		end_of_prog(NO_TEX);
 	tex->adrs = mlx_get_data_addr(tex->img, &tex->bpp, &tex->len, &tex->end);
+}
+
+void	sp_sum(t_cub *all)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (all->map[++i])
+	{
+		j = -1;
+		while (all->map[i][++j])
+		{
+			if (all->map[i][j] == '2')
+				all->sp_count++;
+		}
+	}
+	if (!(sp_count = malloc(sizeof(t_sp *) * all->sp_count)))
+		end_of_prog(NO_MAL);
+}
+
+void	pos_sp_plr(t_cub *all, int i, int j)
+{
+	static int	count;
+
+	if (!count)
+		count = 0;
+	if (ft_strchr("NSWE", all->map[i][j]))
+	{
+		if (all->plr.pstn_x != -1)
+			end_of_prog(MORE_PLR);
+		drctn_plr(all, all->map[i][j]);
+		all->map[i][j] = '0';
+		all->plr.pstn_x = i + 0.45;
+		all->plr.pstn_y = j + 0.45;
+	}
+	if (all->map[i][j] == '2')
+	{
+		all->sp[count].x = i + 0.45;
+		all->sp[count].y = j + 0.45;
+		count++;
+	}
 }

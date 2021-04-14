@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/13 15:54:34 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/14 15:01:16 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ void	make_cart(t_list **head, t_cub *all, int size)
 	}
 	i = 0;
 	validate(all);
-	while (all->map[i])
-	{
-		ft_putendl_fd(all->map[i], 1);
-		i++;
-	}
 	ft_lstclear(head, free);
 }
 

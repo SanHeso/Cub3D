@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:19:23 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/09 16:02:02 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/14 19:52:15 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,27 @@ int		transit_to_map(char *line)
 	return (1);
 }
 
+void	order_sort(t_sort *order, int qua)
+{
+	t_sort	tmp;
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < qua)
+	{
+		j = -1;
+		while (++j < qua - 1)
+		{
+			if (order[j].first > order[i + 1].first)
+			{
+				tmp.first = order[j].first;
+				tmp.second = order[j].second;
+				order[j].first = order[j + 1].first;
+				order[j].second = order[j + 1].second;
+				order[j + 1].first = tmp.first;
+				order[j + 1].second = tmp.second;
+			}
+		}
+	}
+}

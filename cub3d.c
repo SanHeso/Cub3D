@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/13 15:49:56 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/14 18:47:16 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void	assembly(t_cub *all)
 {
 	int		x;
-	double	buf[all->pars.w];
+	int		sp_order[all->sp_count];
+	double	zbuf[all->pars.w];
+	double	sp_dist[all->sp_count];
 
 	x = -1;
 	while (x++ < all->pars.w)
@@ -29,7 +31,7 @@ void	assembly(t_cub *all)
 		texture(all);
 		wall(all, x, all->dda.draw_start -1);
 		ceil_floor(all, x);
-		buf[x] = all->dda.prp_wll_dst;
+		zbuf[x] = all->dda.prp_wll_dst;
 	}
 }
 
