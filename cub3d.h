@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/14 19:54:00 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/19 16:05:37 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ typedef struct		s_pars
 	char			*we;
 	char			*ea;
 	char			*s;
-	float			f[3];
-	float			c[3];
+	int				f[3];
+	int				c[3];
 }					t_pars;
 
 typedef struct		s_plr
@@ -140,7 +140,7 @@ typedef struct		s_dda
 	int				col;
 
 	double			sp_x;
-	double			sp_x;
+	double			sp_y;
 	double			inv_det;
 	double			tr_form_x;
 	double			tr_form_y;
@@ -177,7 +177,7 @@ typedef struct		s_cub
 	t_pars			pars;
 	t_plr			plr;
 	t_dda			dda;
-	t_sprt			*sp;
+	t_sp			*sp;
 	char			**map;
 	int				sp_count;
 	int				scrn_sht;
@@ -220,5 +220,14 @@ void				texture_size(t_cub *all, int width, int height);
 void				sp_sum(t_cub *all);
 void				order_sort(t_sort *order, int qua);
 void				pos_sp_plr(t_cub *all, int i, int j);
+int					ft_mlx_pixel_get(t_win *data, int x, int y);
+void				ft_mlx_pixel_put(t_win *data, int x, int y, int col);
+int					rgb(int arr[3]);
+void				sp_sort(double *dist, int *order, int qua);
+void				sp_distant(t_cub *all, double *sp_dist, int *sp_ord);
+void				sp_pos(t_cub *all, int *sp_ord, int i);
+void				sp_height_width(t_cub *all);
+void				sp_draw(t_cub *all, double *zbuf);
+void				sprite(t_cub *all, double *zbuf, int *sp_order, int x);
 
 #endif

@@ -6,11 +6,22 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/14 18:47:16 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/15 19:27:45 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	sprite(t_cub *all, double *zbuf, int *sp_order, int x)
+{
+	x = -1;
+	while (++x < all->sp_count)
+	{
+		sp_pos(all, sp_order, x);
+		sp_height_width(all);
+		sp_draw(all, zbuf);
+	}
+}
 
 void	assembly(t_cub *all)
 {
@@ -33,6 +44,8 @@ void	assembly(t_cub *all)
 		ceil_floor(all, x);
 		zbuf[x] = all->dda.prp_wll_dst;
 	}
+	sp_distant(all, sp_dist, sp_order);
+	sprite(all, zbuf, sp_order, x);
 }
 
 int		paint(t_cub *all)
@@ -64,7 +77,6 @@ int		main(int argc, char **argv)
 	mlx_hook(all.win.win, 2, 1L << 0, key_press, &all);
 	mlx_hook(all.win.win, 3, 1L << 1, key_release, &all);
 	mlx_hook(all.win.win, 17, 1L << 0, close_prog, &all);
-	// mlx_put_image_to_window(win.mlx, win.win, win.img, 10, 10);
 	mlx_loop_hook(all.win.mlx, &paint, &all);
 	mlx_loop(all.win.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:19:23 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/14 19:52:15 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/18 13:04:25 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	order_sort(t_sort *order, int qua)
 		j = -1;
 		while (++j < qua - 1)
 		{
-			if (order[j].first > order[i + 1].first)
+			if (order[j].first > order[j + 1].first)
 			{
 				tmp.first = order[j].first;
 				tmp.second = order[j].second;

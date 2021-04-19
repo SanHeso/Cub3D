@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/14 15:01:16 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/18 13:21:26 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ void	distribution(t_cub *all, char **arr)
 	else if (!ft_strncmp(arr[0], "EA", 2) && !all->pars.ea && ch_arg(arr))
 		valid_texture(&all->ea, arr, &all->pars.ea);
 	else if (!ft_strncmp(arr[0], "S", 1) && !all->pars.s && ch_arg(arr))
-		all->pars.s = arr[1];
-		// valid_texture(&all->s, arr, &all->pars.s);
+		valid_texture(&all->s, arr, &all->pars.s);
 	else if (!ft_strncmp(arr[0], "F", 1) && !all->pars.f[0] && ch_arg(arr))
 		valid_flo_cei(all, arr[1], 'F');
 	else if (!ft_strncmp(arr[0], "C", 1) && !all->pars.c[0] && ch_arg(arr))

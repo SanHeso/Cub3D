@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:40:22 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/14 19:18:35 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/18 13:43:22 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	sp_sum(t_cub *all)
 				all->sp_count++;
 		}
 	}
-	if (!(sp_count = malloc(sizeof(t_sp *) * all->sp_count)))
+	if (!(all->sp = malloc(sizeof(t_sp *) * all->sp_count)))
 		end_of_prog(NO_MAL);
 }
 
@@ -90,13 +90,13 @@ void	pos_sp_plr(t_cub *all, int i, int j)
 			end_of_prog(MORE_PLR);
 		drctn_plr(all, all->map[i][j]);
 		all->map[i][j] = '0';
-		all->plr.pstn_x = i + 0.45;
-		all->plr.pstn_y = j + 0.45;
+		all->plr.pstn_x = i + 0.5;
+		all->plr.pstn_y = j + 0.5;
 	}
 	if (all->map[i][j] == '2')
 	{
-		all->sp[count].x = i + 0.45;
-		all->sp[count].y = j + 0.45;
+		all->sp[count].x = i + 0.5;
+		all->sp[count].y = j + 0.5;
 		count++;
 	}
 }
