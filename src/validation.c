@@ -6,11 +6,11 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/14 19:20:17 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/21 14:35:52 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 void	valid_cart(t_cub *all, int y, int x)
 {
@@ -32,8 +32,8 @@ void	valid_cart(t_cub *all, int y, int x)
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y + 1][x - 1]))
 		end_of_prog(NO_MAP);
-	if (x > ft_strlen(all->map[y]) || x > ft_strlen(all->map[y + 1]) ||
-	x > ft_strlen(all->map[y - 1]))
+	if (x > (int)ft_strlen(all->map[y]) || x > (int)ft_strlen(all->map[y + 1])
+	|| x > (int)ft_strlen(all->map[y - 1]))
 		end_of_prog(NO_MAP);
 	if (x < 1 || y < 1)
 		end_of_prog(NO_MAP);
@@ -94,12 +94,13 @@ void	valid_arg(t_cub *all, int argc, char **argv)
 
 	if (argc < 2 || argc > 3)
 		end_of_prog(NO_ARG);
+	i = ft_strlen(argv[1]);
 	if (i < 4 || ft_strncmp(&argv[1][i - 4], ".cub", 4))
 		end_of_prog(FILE);
 	if (argc == 3 && ft_strncmp(argv[2], "--save", 6))
 		end_of_prog(FLAG);
 	if (argc == 3 && !ft_strncmp(argv[2], "--save", 6))
-		all->scrn_sht = 1;
+		all->screenshot = 1;
 }
 
 void	validate(t_cub *all)

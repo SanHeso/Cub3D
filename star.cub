@@ -3,7 +3,7 @@ NO pics/purplestone.xpm
 SO pics/greystone.xpm
 WE pics/redbrick.xpm
 EA pics/mossy.xpm
-S ./path_to_the_sprite_texture
+S pics/pillar.xpm
 F 220,100,0
 C 225,30,0
 

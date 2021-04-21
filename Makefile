@@ -6,20 +6,24 @@
 #    By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/09 19:32:06 by hnewman           #+#    #+#              #
-#    Updated: 2021/04/15 19:07:46 by hnewman          ###   ########.fr        #
+#    Updated: 2021/04/21 14:28:14 by hnewman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libcub.a
+NAME = cub3D
+
+HEADER = includes/cub3d.h
 
 SRCS = cub3d.c cub_utils.c cub_utils_2.c parser.c button_move.c calculate.c \
 validation.c screenshot.c paint.c validation_2.c texturing.c sprite.c
 
-OBJS = ${SRCS:.c=.o}
+SRCS_DIR = $(addprefix src/, $(SRCS))
 
-HEADER = cub3d.h
+OBJS = $(patsubst src/%.c, obj/%.o, $(SRCS_DIR))
 
-PATH_LIBFT = libft/
+OUT_DIR = obj
+
+PATH_LIBFT = libft/libft.a
 
 GREEN = "\033[0;32m"
 CYAN = "\033[0;36m"
@@ -27,27 +31,39 @@ EOC = "\033[0m"
 
 CC = @gcc
 
-# CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
-all:		$(NAME)
+INCLUDE = -IMLX -Iincludes
 
-$(NAME):	$(OBJS)
-				@make -C ${PATH_LIBFT} bonus
-				@ar rcs $(NAME) libft/*.o ${OBJS}
-				$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(NAME)
+all:		$(OUT_DIR) $(PATH_LIBFT) $(PATH_MLX) $(NAME)
+
+obj/%.o:	src/%.c
+				@$(CC) $(CFLAGS) -IMLX -c $< -o $@
+
+$(NAME):	$(OBJS) $(PATH_LIBFT) $(HEADER)
+				$(CC) $(OBJS) MLX/libmlx.a $(PATH_LIBFT) $(INCLUDE) -framework OpenGL -framework AppKit -o $(NAME)
 				@echo $(CYAN) "$(NAME) COMPLETE!!" $(EOC)
 
-%.o:		%.c
-				$(CC) -g  -Imlx -c $< -o $@
+$(OUT_DIR):
+				@mkdir -p $@
+				@echo $(GREEN) "$@ DIRECTION CREATED!!" $(EOC)
+
+$(PATH_LIBFT):
+				@make -C libft/ bonus
+				@echo $(CYAN) "libft.a COMPLETE!!" $(EOC)
+
+$(PATH_MLX):
+				@make -C MLX/ re
+				@echo $(CYAN) "libmlx.a COMPLETE!!" $(EOC)
 
 clean:
-				@rm -f ${OBJS}
-				@make -C ${PATH_LIBFT} clean
+				@rm -rf $(OUT_DIR)
+				@make -C libft/ clean
 				@echo $(GREEN) "CLEAN COMPLETE!!" $(EOC)
 
 fclean:		clean
 				@rm -f $(NAME)
-				@make -C ${PATH_LIBFT} fclean
+				@make -C libft/ fclean
 				@echo $(GREEN) "FCLEAN COMPLETE!!" $(EOC)
 
 re:			fclean all
