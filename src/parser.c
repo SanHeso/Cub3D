@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 14:33:46 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/22 16:51:53 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,24 @@ void	make_cart(t_list **head, t_cub *all, int size)
 
 void	distribution(t_cub *all, char **arr)
 {
-	if (!ft_strncmp(arr[0], "R", 1) && !all->pars.h && !arr[3])
+	if (!ft_strncmp(arr[0], "R", 2) && !all->pars.h && !arr[3])
 		valid_screen_size(all, arr);
-	else if (!ft_strncmp(arr[0], "NO", 2) && !all->pars.no && ch_arg(arr))
+	else if (!ft_strncmp(arr[0], "NO", 3) && !all->pars.no && ch_arg(arr))
 		valid_texture(&all->no, arr, &all->pars.no);
-	else if (!ft_strncmp(arr[0], "SO", 2) && !all->pars.so && ch_arg(arr))
+	else if (!ft_strncmp(arr[0], "SO", 3) && !all->pars.so && ch_arg(arr))
 		valid_texture(&all->so, arr, &all->pars.so);
-	else if (!ft_strncmp(arr[0], "WE", 2) && !all->pars.we && ch_arg(arr))
+	else if (!ft_strncmp(arr[0], "WE", 3) && !all->pars.we && ch_arg(arr))
 		valid_texture(&all->we, arr, &all->pars.we);
-	else if (!ft_strncmp(arr[0], "EA", 2) && !all->pars.ea && ch_arg(arr))
+	else if (!ft_strncmp(arr[0], "EA", 3) && !all->pars.ea && ch_arg(arr))
 		valid_texture(&all->ea, arr, &all->pars.ea);
-	else if (!ft_strncmp(arr[0], "S", 1) && !all->pars.s && ch_arg(arr))
+	else if (!ft_strncmp(arr[0], "S", 2) && !all->pars.s && ch_arg(arr))
 		valid_texture(&all->s, arr, &all->pars.s);
-	else if (!ft_strncmp(arr[0], "F", 1) && !all->pars.f[0] && ch_arg(arr))
+	else if (!ft_strncmp(arr[0], "F", 2) && all->pars.f[0] == -1 && ch_arg(arr))
 		valid_flo_cei(all, arr[1], 'F');
-	else if (!ft_strncmp(arr[0], "C", 1) && !all->pars.c[0] && ch_arg(arr))
+	else if (!ft_strncmp(arr[0], "C", 2) && all->pars.c[0] == -1 && ch_arg(arr))
 		valid_flo_cei(all, arr[1], 'C');
 	else
-		end_of_prog(MIS_DUB);
+		end_of_prog(NO_DISTR);
 }
 
 void	parser(t_cub *all)
@@ -59,7 +59,7 @@ void	parser(t_cub *all)
 	char	**arr;
 	t_list	*head;
 
-	while ((get_next_line(all->pars.fd, &line)) != -1 && !transit_to_map(line))
+	while ((get_next_line(all->pars.fd, &line)) != -1 && !transit(line, all))
 	{
 		if (line[0] != '\0')
 		{

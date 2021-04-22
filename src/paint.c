@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:52:08 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 14:34:03 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/22 16:08:15 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ceil_floor(t_cub *all, int x)
 	int		y;
 
 	y = -1;
+	if (all->pars.f[0] == -1 || all->pars.c[0] == -1)
+		end_of_prog(NO_PARAM);
 	while (++y < all->dda.draw_start)
 		ft_mlx_pixel_put(&all->win, x, y, rgb(all->pars.c));
 	y = all->dda.draw_end - 1;

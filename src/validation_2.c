@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:40:22 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 14:33:52 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/21 15:48:56 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	real_screen_size(t_cub *all)
 {
-	// int		rw;
-	// int		rh;
-	all->pars.w = 200;
-	all->pars.h = 1280;
-// 	mlx_get_screen_size(&rw, &rh);
-// 	if (all->pars.h > rh)
-// 		all->pars.h = rh;
-// 	if (all->pars.w > rw)
-// 		all->pars.w = rw;
+	int		rw;
+	int		rh;
+
+	mlx_get_screen_size(&rw, &rh);
+	if (all->pars.h > rh)
+		all->pars.h = rh;
+	if (all->pars.w > rw)
+		all->pars.w = rw;
 }
 
 void	drctn_plr(t_cub *all, int ch)

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:19:23 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 14:33:38 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/22 17:00:37 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ch_arg(char **arr)
 	return (0);
 }
 
-int		transit_to_map(char *line)
+int		transit(char *line, t_cub *all)
 {
 	int		i;
 
@@ -51,6 +51,9 @@ int		transit_to_map(char *line)
 		else
 			return (0);
 	}
+	if (!all->pars.w || !all->pars.no || !all->pars.so || !all->pars.we ||
+	!all->pars.ea || !all->pars.s || !all->pars.f[0] || !all->pars.c[0])
+		return (0);
 	return (1);
 }
 

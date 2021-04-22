@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 14:33:33 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/22 18:13:19 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ void	init_pars(t_cub *all)
 	all->pars.we = 0;
 	all->pars.ea = 0;
 	all->pars.s = 0;
-	all->pars.f[0] = 0, 0, 0;
-	all->pars.c[0] = 0, 0, 0;
+	all->pars.f[0] = -1;
+	all->pars.f[1] = -1;
+	all->pars.f[2] = -1;
+	all->pars.c[0] = -1;
+	all->pars.c[1] = -1;
+	all->pars.c[2] = -1;
 }
 
 void	init_ray(t_cub *all, int x)
@@ -72,9 +76,12 @@ int		mod_atoi(char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		end_of_prog(MATH);
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i])
 	{
-		u = u * 10 + (str[i] - '0');
+		if (str[i] >= '0' && str[i] <= '9')
+			u = u * 10 + (str[i] - '0');
+		else
+			end_of_prog(NO_DIGIT);
 		i++;
 	}
 	if (u > 99999)

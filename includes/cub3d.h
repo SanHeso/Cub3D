@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 14:33:16 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/22 18:43:17 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define PARAM_MAP ERR "Invalid map parameters: "
 # define NO_MAL ERR "Memory is not allocated\n"
 # define RESOLUTION PARAM_MAP "Screen resolution\n"
-# define MIS_DUB PARAM_MAP "Missing or duplicate\n"
+# define NO_DISTR PARAM_MAP "Incorrect distribution\n"
 # define NO_DIGIT PARAM_MAP "Not a number entered\n"
+# define NO_PARAM PARAM_MAP "Parameter missing\n"
 # define NO_ARG ERR "More or less arguments\n"
 # define MATH ERR "Arithmetic sign introduced\n"
 # define NO_COLOR ERR "Wrong color code\n"
@@ -217,7 +218,7 @@ void				height_wall(t_dda *dda, t_pars *pars);
 void				draw_wall(t_cub *all, int x, int y);
 void				ceil_floor(t_cub *all, int x);
 void				drctn_plr(t_cub *all, int ch);
-int					transit_to_map(char *line);
+int					transit(char *line, t_cub *all);
 void				wall_hit(t_cub *all);
 void				texture(t_cub *all);
 void				texture_size(t_cub *all, int width, int height);
@@ -234,5 +235,6 @@ void				sp_height_width(t_cub *all);
 void				sp_draw(t_cub *all, double *zbuf);
 void				sprite(t_cub *all, double *zbuf, int *sp_order, int x);
 void				screenshot(t_cub *all, const char *name);
+int					check_comma(char *arr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 14:35:52 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/22 19:19:49 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	valid_cart(t_cub *all, int y, int x)
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y + 1][x - 1]))
 		end_of_prog(NO_MAP);
-	if (x > (int)ft_strlen(all->map[y]) || x > (int)ft_strlen(all->map[y + 1])
-	|| x > (int)ft_strlen(all->map[y - 1]))
+	if (x > (int)ft_strlen(all->map[y + 1]) ||
+	x > (int)ft_strlen(all->map[y - 1]))
 		end_of_prog(NO_MAP);
 	if (x < 1 || y < 1)
 		end_of_prog(NO_MAP);
@@ -44,17 +44,25 @@ void	valid_screen_size(t_cub *all, char **arr)
 	int		i;
 
 	i = 0;
-	if (all->pars.w)
+	if (!all->pars.w)
 	{
-		while (!ft_isdigit(arr[1][i++]))
-			end_of_prog(RESOLUTION);
-		all->pars.h = mod_atoi(arr[1]);
+		while (arr[1][i])
+		{
+			if (!ft_isdigit(arr[1][i]))
+				end_of_prog(RESOLUTION);
+			i++;
+		}
+		all->pars.w = mod_atoi(arr[1]);
 	}
 	i = 0;
-	if (all->pars.h)
+	if (!all->pars.h)
 	{
-		while (!ft_isdigit(arr[2][i++]))
-			end_of_prog(RESOLUTION);
+		while (arr[2][i])
+		{
+			if (!ft_isdigit(arr[2][i]))
+				end_of_prog(RESOLUTION);
+			i++;
+		}
 		all->pars.h = mod_atoi(arr[2]);
 	}
 	real_screen_size(all);
@@ -68,10 +76,13 @@ void	valid_flo_cei(t_cub *all, char *arr, int ch)
 	int		i;
 
 	i = 0;
-	tmp = ft_split(arr, ',');
+	if (check_comma(arr))
+		tmp = ft_split(arr, ',');
 	while (ch == 'F' && i < 3)
 	{
-		all->pars.f[i] = ft_atoi(tmp[i]);
+		if (!tmp[i])
+			end_of_prog(NO_COLOR);
+		all->pars.f[i] = mod_atoi(tmp[i]);
 		if (all->pars.f[i] > 255)
 			end_of_prog(NO_COLOR);
 		free(tmp[i]);
@@ -79,7 +90,9 @@ void	valid_flo_cei(t_cub *all, char *arr, int ch)
 	}
 	while (ch == 'C' && i < 3)
 	{
-		all->pars.c[i] = (float)ft_atoi(tmp[i]);
+		if (!tmp[i])
+			end_of_prog(NO_COLOR);
+		all->pars.c[i] = mod_atoi(tmp[i]);
 		if (all->pars.c[i] > 255)
 			end_of_prog(NO_COLOR);
 		free(tmp[i]);
@@ -115,7 +128,7 @@ void	validate(t_cub *all)
 		if (all->map[i][0] == '\0')
 			end_of_prog(NO_MAP);
 		j = -1;
-		while (all->map[i][++j])
+		while (all->map[i][j++])
 		{
 			if (ft_strchr("02NSWE", all->map[i][j]))
 				valid_cart(all, i, j);
