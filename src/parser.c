@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/22 16:51:53 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/24 21:00:17 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ void	make_cart(t_list **head, t_cub *all, int size)
 		i++;
 	}
 	i = 0;
-	validate(all);
+	validate(all, size);
 	ft_lstclear(head, free);
 }
 
 void	distribution(t_cub *all, char **arr)
 {
-	if (!ft_strncmp(arr[0], "R", 2) && !all->pars.h && !arr[3])
+	if (arr[0] == '\0')
+		return ;
+	if (!ft_strncmp(arr[0], "R", 2) && !all->pars.h && arr[1] && arr[2] &&
+	!arr[3])
 		valid_screen_size(all, arr);
 	else if (!ft_strncmp(arr[0], "NO", 3) && !all->pars.no && ch_arg(arr))
 		valid_texture(&all->no, arr, &all->pars.no);
@@ -59,7 +62,7 @@ void	parser(t_cub *all)
 	char	**arr;
 	t_list	*head;
 
-	while ((get_next_line(all->pars.fd, &line)) != -1 && !transit(line, all))
+	while ((get_next_line(all->pars.fd, &line)) > 0 && !transit(line, all))
 	{
 		if (line[0] != '\0')
 		{

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 16:50:57 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/21 16:23:58 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/24 16:07:37 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	sp_height_width(t_cub *all)
 	all->dda.draw_end_y = all->dda.sp_h / 2 + all->pars.h / 2;
 	if (all->dda.draw_end_y >= all->pars.h)
 		all->dda.draw_end_y = all->pars.h - 1;
-	all->dda.sp_w = abs((int)(all->pars.h / (all->dda.tr_form_y)));
+	all->dda.sp_w = abs((int)(all->pars.w / all->dda.tr_form_y) / 2);
 	all->dda.draw_start_x = -all->dda.sp_w / 2 + all->dda.sp_scrn_x;
 	if (all->dda.draw_start_x < 0)
 		all->dda.draw_start_x = 0;

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 19:58:28 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/22 18:43:17 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/24 21:01:55 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # define NO_FD ERR "File descriptor is not closed\n"
 # define NO_WRITE ERR "Invalid write to file\n"
 # define NO_CREATE ERR ".bmp file was not created\n"
+# define MIS_MAP ERR "Missing map\n"
+# define OVERFL ERR "Overflow occurred\n"
 
 typedef struct		s_bitmapfileheader
 {
@@ -195,9 +197,9 @@ void				parser(t_cub *all);
 void				valid_flo_cei(t_cub *all, char *arr, int ch);
 void				valid_arg(t_cub *all, int argc, char **argv);
 void				valid_screen_size(t_cub *all, char **arr);
-void				valid_cart(t_cub *all, int y, int x);
+void				valid_cart(t_cub *all, int y, int x, int size);
 void				valid_texture(t_win *tex, char **mas, char **root);
-void				validate(t_cub *all);
+void				validate(t_cub *all, int size);
 void				real_screen_size(t_cub *all);
 void				memfree(char ***arr);
 void				end_of_prog(char *s);

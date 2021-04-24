@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:41:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/22 18:44:13 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/24 20:18:13 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,4 @@ int		check_comma(char *arr)
 	end_of_prog(NO_COLOR);
 	return (0);
 }
+

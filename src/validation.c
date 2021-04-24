@@ -6,36 +6,31 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/22 19:19:49 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/24 21:01:28 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	valid_cart(t_cub *all, int y, int x)
+void	valid_cart(t_cub *all, int y, int x, int size)
 {
-	if (!ft_strchr("012NSEW", all->map[y][x]))
+	if (x < 1 || y < 1 || y == size)
 		end_of_prog(NO_MAP);
-	if (!ft_strchr("012NSEW", all->map[y][x + 1]))
+	if (!all->map[y][x + 1] || !ft_strchr("012NSEW", all->map[y][x + 1]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y][x - 1]))
+		end_of_prog(NO_MAP);
+	if (!all->map[y - 1][x + 1] || !ft_strchr("012NSEW", all->map[y - 1][x + 1]))
+		end_of_prog(NO_MAP);
+	if (!all->map[y + 1][x + 1] || !ft_strchr("012NSEW", all->map[y + 1][x + 1]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y + 1][x]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y - 1][x]))
 		end_of_prog(NO_MAP);
-	if (!ft_strchr("012NSEW", all->map[y - 1][x + 1]))
-		end_of_prog(NO_MAP);
-	if (!ft_strchr("012NSEW", all->map[y + 1][x + 1]))
-		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y - 1][x - 1]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y + 1][x - 1]))
-		end_of_prog(NO_MAP);
-	if (x > (int)ft_strlen(all->map[y + 1]) ||
-	x > (int)ft_strlen(all->map[y - 1]))
-		end_of_prog(NO_MAP);
-	if (x < 1 || y < 1)
 		end_of_prog(NO_MAP);
 }
 
@@ -110,13 +105,13 @@ void	valid_arg(t_cub *all, int argc, char **argv)
 	i = ft_strlen(argv[1]);
 	if (i < 4 || ft_strncmp(&argv[1][i - 4], ".cub", 4))
 		end_of_prog(FILE);
-	if (argc == 3 && ft_strncmp(argv[2], "--save", 6))
+	if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
 		end_of_prog(FLAG);
-	if (argc == 3 && !ft_strncmp(argv[2], "--save", 6))
+	if (argc == 3 && !ft_strncmp(argv[2], "--save", 7))
 		all->screenshot = 1;
 }
 
-void	validate(t_cub *all)
+void	validate(t_cub *all, int size)
 {
 	int		i;
 	int		j;
@@ -128,13 +123,13 @@ void	validate(t_cub *all)
 		if (all->map[i][0] == '\0')
 			end_of_prog(NO_MAP);
 		j = -1;
-		while (all->map[i][j++])
+		while (all->map[i][++j])
 		{
 			if (ft_strchr("02NSWE", all->map[i][j]))
-				valid_cart(all, i, j);
+				valid_cart(all, i, j, size);
 			pos_sp_plr(all, i, j);
 		}
 	}
-	if (all->plr.pln_x == -1)
+	if (all->plr.pstn_x == -1)
 		end_of_prog(NO_PLR);
 }

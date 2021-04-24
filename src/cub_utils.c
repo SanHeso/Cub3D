@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:24:14 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/22 18:13:19 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/24 19:29:39 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int		mod_atoi(char *str)
 
 	i = 0;
 	u = 0;
+	if (ft_strlen(str) > 9)
+		end_of_prog(OVERFL);
 	while (str[i] == '\n' || str[i] == '\t' || str[i] == ' ' \
 	|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
 		i++;

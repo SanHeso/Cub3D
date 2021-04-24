@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:58:43 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/22 14:59:47 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/24 16:10:48 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	fish_eye(t_dda *dda, t_plr *plr)
 
 void	height_wall(t_dda *dda, t_pars *pars)
 {
-	dda->line_height = (int)(pars->w / dda->prp_wll_dst);
+	dda->line_height = (int)(pars->h / dda->prp_wll_dst);
 	dda->draw_start = -dda->line_height / 2 + pars->h / 2;
 	if (dda->draw_start < 0)
 		dda->draw_start = 0;
