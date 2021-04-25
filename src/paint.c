@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:52:08 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/22 16:08:15 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 16:49:30 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_wall(t_cub *all, int x, int y)
 			if (all->dda.stp_x > 0)
 				all->dda.col = ft_mlx_pixel_get(&all->no, all->dda.tex_x,
 				all->dda.tex_y);
-			 if (all->dda.stp_x < 0)
+			if (all->dda.stp_x < 0)
 				all->dda.col = ft_mlx_pixel_get(&all->so, all->dda.tex_x,
 				all->dda.tex_y);
 		}

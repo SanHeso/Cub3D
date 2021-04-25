@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 18:32:38 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/24 21:01:28 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 16:56:53 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void	valid_cart(t_cub *all, int y, int x, int size)
 {
-	if (x < 1 || y < 1 || y == size)
+	if (x < 1 || y < 1 || y == size - 1)
 		end_of_prog(NO_MAP);
 	if (!all->map[y][x + 1] || !ft_strchr("012NSEW", all->map[y][x + 1]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y][x - 1]))
 		end_of_prog(NO_MAP);
-	if (!all->map[y - 1][x + 1] || !ft_strchr("012NSEW", all->map[y - 1][x + 1]))
+	if (!all->map[y - 1][x + 1] || !ft_strchr("012NSEW",
+	all->map[y - 1][x + 1]))
 		end_of_prog(NO_MAP);
-	if (!all->map[y + 1][x + 1] || !ft_strchr("012NSEW", all->map[y + 1][x + 1]))
+	if (!all->map[y + 1][x + 1] || !ft_strchr("012NSEW",
+	all->map[y + 1][x + 1]))
 		end_of_prog(NO_MAP);
 	if (!ft_strchr("012NSEW", all->map[y + 1][x]))
 		end_of_prog(NO_MAP);
@@ -38,25 +40,23 @@ void	valid_screen_size(t_cub *all, char **arr)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	if (!all->pars.w)
 	{
-		while (arr[1][i])
+		while (arr[1][++i])
 		{
 			if (!ft_isdigit(arr[1][i]))
 				end_of_prog(RESOLUTION);
-			i++;
 		}
 		all->pars.w = mod_atoi(arr[1]);
 	}
 	i = 0;
 	if (!all->pars.h)
 	{
-		while (arr[2][i])
+		while (arr[2][++i])
 		{
 			if (!ft_isdigit(arr[2][i]))
 				end_of_prog(RESOLUTION);
-			i++;
 		}
 		all->pars.h = mod_atoi(arr[2]);
 	}
@@ -70,10 +70,10 @@ void	valid_flo_cei(t_cub *all, char *arr, int ch)
 	char	**tmp;
 	int		i;
 
-	i = 0;
+	i = -1;
 	if (check_comma(arr))
 		tmp = ft_split(arr, ',');
-	while (ch == 'F' && i < 3)
+	while (ch == 'F' && ++i < 3)
 	{
 		if (!tmp[i])
 			end_of_prog(NO_COLOR);
@@ -81,9 +81,8 @@ void	valid_flo_cei(t_cub *all, char *arr, int ch)
 		if (all->pars.f[i] > 255)
 			end_of_prog(NO_COLOR);
 		free(tmp[i]);
-		i++;
 	}
-	while (ch == 'C' && i < 3)
+	while (ch == 'C' && ++i < 3)
 	{
 		if (!tmp[i])
 			end_of_prog(NO_COLOR);
@@ -91,7 +90,6 @@ void	valid_flo_cei(t_cub *all, char *arr, int ch)
 		if (all->pars.c[i] > 255)
 			end_of_prog(NO_COLOR);
 		free(tmp[i]);
-		i++;
 	}
 	free(tmp);
 }

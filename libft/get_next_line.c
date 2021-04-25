@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 20:12:39 by hnewman           #+#    #+#             */
-/*   Updated: 2021/02/14 15:40:32 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 17:00:19 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char		*ft_strjoin_ch(char *s1, char const *s2)
 	return (str);
 }
 
-int				get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	char		*buf;
 	static char	*rem;

@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 20:01:19 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/24 15:13:45 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 16:49:05 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ int		main(int argc, char **argv)
 		end_of_prog(NO_DIR);
 	init_player(&all);
 	parser(&all);
-
 	all.win.mlx = mlx_init();
 	all.win.img = mlx_new_image(all.win.mlx, all.pars.w, all.pars.h);
-	all.win.adrs = mlx_get_data_addr(all.win.img, &all.win.bpp, &all.win.len, &all.win.end);
+	all.win.adrs = mlx_get_data_addr(all.win.img, &all.win.bpp, &all.win.len,
+	&all.win.end);
 	all.win.win = mlx_new_window(all.win.mlx, all.pars.w, all.pars.h, "first");
 	if (!all.screenshot)
 	{

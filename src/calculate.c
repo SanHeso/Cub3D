@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:58:43 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/24 16:10:48 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 16:30:54 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	step(t_cub *all)
 
 void	alg_dda(t_dda *dda, char **map)
 {
-	while(dda->hit == 0)
+	while (dda->hit == 0)
 	{
 		if (dda->sd_dst_x < dda->sd_dst_y)
 		{

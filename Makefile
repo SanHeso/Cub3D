@@ -6,7 +6,7 @@
 #    By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/09 19:32:06 by hnewman           #+#    #+#              #
-#    Updated: 2021/04/21 14:28:14 by hnewman          ###   ########.fr        #
+#    Updated: 2021/04/24 08:49:01 by hnewman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = cub3D
 HEADER = includes/cub3d.h
 
 SRCS = cub3d.c cub_utils.c cub_utils_2.c parser.c button_move.c calculate.c \
-validation.c screenshot.c paint.c validation_2.c texturing.c sprite.c
+validation.c screenshot.c paint.c validation_2.c texturing.c sprite.c \
+validation_3.c
 
 SRCS_DIR = $(addprefix src/, $(SRCS))
 

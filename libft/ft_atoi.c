@@ -6,11 +6,19 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 16:10:39 by hnewman           #+#    #+#             */
-/*   Updated: 2021/03/17 19:12:44 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/22 15:01:50 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		skip(char *str, int i)
+{
+	while (str[i] == '\n' || str[i] == '\t' || str[i] == ' ' \
+	|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
+		i++;
+	return (i);
+}
 
 int		ft_atoi(char *str)
 {
@@ -21,9 +29,9 @@ int		ft_atoi(char *str)
 	i = 0;
 	u = 0;
 	s = 0;
-	while (str[i] == '\n' || str[i] == '\t' || str[i] == ' ' \
-	|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
-		i++;
+	if (!str)
+		return (-1);
+	skip(str, i);
 	if (str[i] == '-')
 	{
 		s++;

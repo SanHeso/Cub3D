@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:58:06 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/24 15:57:23 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 16:50:47 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int		key_press(int keycode, t_cub *all)
 		all->plr.rttn = -1;
 	else if (keycode == 123)
 		all->plr.rttn = 1;
-	// if (keycode)
-	// 	ft_putnbr_fd(keycode, 1);
 	return (1);
 }
 
@@ -45,8 +43,6 @@ int		key_release(int keycode, t_cub *all)
 		all->plr.bttn_d = 0;
 	if (keycode == 124 || keycode == 123)
 		all->plr.rttn = 0;
-	// if (keycode)
-	// 	ft_putnbr_fd(keycode, 1);
 	return (1);
 }
 

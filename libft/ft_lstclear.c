@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 13:17:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/02/09 14:24:47 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 16:24:55 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	while (tmp)
 	{
 		lst[0] = lst[0]->next;
+		if (tmp->content)
+			del(tmp->content);
 		del(tmp);
 		tmp = lst[0];
 	}

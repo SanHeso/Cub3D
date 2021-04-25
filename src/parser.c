@@ -6,7 +6,7 @@
 /*   By: hnewman <hnewman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:43:54 by hnewman           #+#    #+#             */
-/*   Updated: 2021/04/24 21:00:17 by hnewman          ###   ########.fr       */
+/*   Updated: 2021/04/25 16:21:19 by hnewman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	make_cart(t_list **head, t_cub *all, int size)
 {
-	t_list	*tmp = *head;
+	t_list	*tmp;
 	int		i;
 
+	tmp = *head;
 	if (!(all->map = ft_calloc(size + 1, sizeof(char *))))
 		end_of_prog(NO_MAL);
 	i = 0;
@@ -28,7 +29,7 @@ void	make_cart(t_list **head, t_cub *all, int size)
 	}
 	i = 0;
 	validate(all, size);
-	ft_lstclear(head, free);
+	ft_lstclear(head, &free);
 }
 
 void	distribution(t_cub *all, char **arr)
@@ -70,6 +71,7 @@ void	parser(t_cub *all)
 			distribution(all, arr);
 			memfree(&arr);
 		}
+		free(line);
 	}
 	ft_lstadd_back(&head, ft_lstnew(line));
 	free(line);
